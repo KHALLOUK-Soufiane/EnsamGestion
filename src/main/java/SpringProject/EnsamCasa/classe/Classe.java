@@ -26,7 +26,7 @@ public class Classe {
 			generator = "classe_sequence"
 			)
 	private Long id;
-	private String niveau;
+	private int niveau;
 	private String libelle;
 	private String filiere;
 	@OneToMany(cascade = CascadeType.ALL)
@@ -36,14 +36,14 @@ public class Classe {
 		super();
 	}
 	
-	public Classe(String niveau, String libelle, String filiere) {
+	public Classe(int niveau, String libelle, String filiere) {
 		super();
 		this.niveau = niveau;
 		this.libelle = libelle;
 		this.filiere = filiere;
 	}
 	
-	public Classe(Long id, String niveau, String libelle, String filiere) {
+	public Classe(Long id, int niveau, String libelle, String filiere) {
 		super();
 		this.id = id;
 		this.niveau = niveau;
@@ -59,11 +59,11 @@ public class Classe {
 		this.id = id;
 	}
 
-	public String getNiveau() {
+	public int getNiveau() {
 		return this.niveau;
 	}
 
-	public void setNiveau(String niveau) {
+	public void setNiveau(int niveau) {
 		this.niveau = niveau;
 	}
 

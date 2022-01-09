@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import SpringProject.EnsamCasa.classe.Classe;
+import SpringProject.EnsamCasa.professeur.Professeur;
 
 
 
@@ -27,16 +32,38 @@ public class Matiere {
 			)
 		private Long id;
 		private String name;
-		private String prof;
+	    @ManyToOne
+	    @JoinColumn(name = "idProf")
+	    private Professeur professeur;
+	    @ManyToOne
+	    @JoinColumn(name = "idClasse")
+	    private Classe classe;
 		
 		public Matiere() {
 			super();
 		}
 		
-		public Matiere(String name,String prof) {
+		public Matiere(String name,Professeur prof,Classe classe) {
 			this.name=name;
-			this.prof=prof;
+			this.professeur=prof;
+			this.classe = classe;
 			}
+
+		public Classe getClasse() {
+			return classe;
+		}
+
+		public void setClasse(Classe classe) {
+			this.classe = classe;
+		}
+
+		public Professeur getProfesseur() {
+			return professeur;
+		}
+
+		public void setProfesseur(Professeur professeur) {
+			this.professeur = professeur;
+		}
 
 		public String getName() {
 			return name;
@@ -46,13 +73,7 @@ public class Matiere {
 			this.name = name;
 		}
 
-		public String getProf() {
-			return prof;
-		}
 
-		public void setProf(String prof) {
-			this.prof = prof;
-		}
 		
 
 	}
