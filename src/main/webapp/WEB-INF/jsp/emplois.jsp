@@ -13,27 +13,28 @@
               </div>
               
                <div class="row">
-                <div class="col pr-1">
-                      <div class="form-group">
-                        <label>Filière:</label>
-						<select class="form-select form-control" name="filiere">
-                                        <optgroup label="Filiere">
-                                            <option value="IAGI1">IAGI 1</option>
-                                            <option value="IAGI2">IAGI 2</option>
-                                            <option value="IAGI3">IAGI 3</option>
-                                            <option value="GEM1">GEM 1</option>
-                                            <option value="GEM2">GEM 2</option>
-                                            <option value="GEM3">GEM 3</option>
-                                            <option value="MSEI1">MSEI 1</option>
-                                            <option value="MSEI2">MSEI 2</option>
-                                            <option value="MSEI3">MSEI 3</option>
-                                        </optgroup>
-                                    </select>                      
-                     </div>
-                    </div>    
-               
-               </div>
-               
+	               <div class="col pr-1">
+						<form action="emplois" method="get">
+							<div class="form-group">
+								<label>Filière:</label>
+								<select class="form-select form-control" name="filiere">
+									<optgroup label="Filiere">
+									    <option value="IAGI1" ${filiere eq 'IAGI1' ? 'selected' : ''}>IAGI 1</option>
+									    <option value="IAGI2" ${filiere eq 'IAGI2' ? 'selected' : ''}>IAGI 2</option>
+									    <option value="IAGI3" ${filiere eq 'IAGI3' ? 'selected' : ''}>IAGI 3</option>
+									    <option value="GEM1" ${filiere eq 'GEM1' ? 'selected' : ''}>GEM 1</option>
+									    <option value="GEM2" ${filiere eq 'GEM2' ? 'selected' : ''}>GEM 2</option>
+									    <option value="GEM3" ${filiere eq 'GEM3' ? 'selected' : ''}>GEM 3</option>
+									    <option value="MSEI1" ${filiere eq 'MSEI1' ? 'selected' : ''}>MSEI 1</option>
+									    <option value="MSEI2" ${filiere eq 'MSEI2' ? 'selected' : ''}>MSEI 2</option>
+									    <option value="MSEI3" ${filiere eq 'MSEI3' ? 'selected' : ''}>MSEI 3</option>
+									</optgroup>
+								</select>                
+							</div>
+			               	<input type="submit" value="Submit" class="btn btn-info"/>
+			          	</form>
+                  	</div>    
+	              </div>
               </div>
               
               <div class="card-body">
