@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import SpringProject.EnsamCasa.classe.Classe;
+import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.creneau.CreneauRepository;
 import SpringProject.EnsamCasa.emploi.Emploi;
@@ -36,6 +38,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired CreneauRepository ob4;
     @Autowired MatiereRepository ob5;
     @Autowired EmploiRepository ob6;
+    @Autowired ClasseRepository ob7;
+
 
 
 
@@ -50,36 +54,46 @@ public class EnsamCasaApplication implements CommandLineRunner{
         ob.save(student);
         Salle s = new Salle("adskfjaldssalle",30,1);
         ob3.save(s);
-        
+        Classe iagi1 = new Classe(3,"1ere annee IAGI","IAGI");
+        ob7.save(iagi1);
+        Classe iagi2 = new Classe(4,"2eme annee IAGI","IAGI");
+        ob7.save(iagi2);
+
+        Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
+        ob7.save(api1);
+
+
 		ArrayList<Matiere> cours = new ArrayList<Matiere>();
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
-		Emploi emp1 = new Emploi(1,"IAGI");
+		Emploi emp1 = new Emploi(1,iagi1);
 		
-		Matiere c1 = new Matiere("php","zakrani");
-		Matiere c2 = new Matiere("html","moutachaouik");
-		Matiere c3 = new Matiere("mongodb","chergui");
-		Matiere c4 = new Matiere("merise","elfaquih");
-		Matiere c5 = new Matiere("Linux","chergui");
-		Matiere c6 = new Matiere("java","zakrani");
-		Matiere c7 = new Matiere("oracle","Hain");
-		Matiere c8 = new Matiere("Machine Learning","elfaquih");
-		Matiere c9 = new Matiere("Analyse data","Azmi");
-		Matiere c10 = new Matiere("sport","soussi");
-		Matiere c11 = new Matiere("securite","bahnass");
-		Matiere c12 = new Matiere("python","Hain");
-		Matiere c14 = new Matiere("Analyse 1","Laaraj");
-		Matiere c13 = new Matiere("Algebre 2","Tsouli");
-		Matiere c15 = new Matiere("Algebre 1","Tsouli");
-		Matiere c16 = new Matiere("Design pattern","zakrani");
-		Matiere c17= new Matiere("Anglais","khayma");
-		Matiere c18 = new Matiere("espagnol","haddioui");
-		Matiere c19 = new Matiere("Administration","bahnass");
-		Matiere c20 = new Matiere("jee","Elfaquih");
-		Matiere c21 = new Matiere("Algebre 1","Tsouli");
-		Matiere c22 = new Matiere("Design pattern","zakrani");
-		Matiere c23= new Matiere("Anglais","khayma");
-		Matiere c24 = new Matiere("espagnol","haddioui");
-		Matiere c25 = new Matiere("Administration","bahnass");
+		Professeur prof=new Professeur("zakrani");
+		ob2.save(prof);
+		Matiere c1 = new Matiere("php",prof,iagi1);
+		Matiere c2 = new Matiere("html",prof,iagi1);
+		Matiere c3 = new Matiere("mongodb",prof,iagi2);
+		Matiere c4 = new Matiere("merise",prof,iagi1);
+		Matiere c5 = new Matiere("Linux",prof,iagi1);
+		Matiere c6 = new Matiere("java",prof,iagi1);
+		Matiere c7 = new Matiere("oracle",prof,iagi2);
+		Matiere c8 = new Matiere("Machine Learning",prof,iagi2);
+		Matiere c9 = new Matiere("Analyse data",prof,iagi2);
+		Matiere c10 = new Matiere("sport",prof,iagi1);
+		Matiere c11 = new Matiere("securite",prof,iagi2);
+		Matiere c12 = new Matiere("python",prof,iagi1);
+		Matiere c14 = new Matiere("Analyse 1",prof,api1);
+		Matiere c13 = new Matiere("Algebre 2",prof,api1);
+		Matiere c15 = new Matiere("Algebre 1",prof,api1);
+		Matiere c16 = new Matiere("Design pattern",prof,iagi2);
+		Matiere c17= new Matiere("Anglais",prof,iagi2);
+		Matiere c18 = new Matiere("espagnol",prof,iagi2);
+		Matiere c19 = new Matiere("Administration",prof,iagi2);
+		Matiere c20 = new Matiere("jee",prof,iagi2);
+		Matiere c21 = new Matiere("Algebre 1",prof,api1);
+		Matiere c22 = new Matiere("Design pattern",prof,iagi2);
+		Matiere c23= new Matiere("Anglais",prof,api1);
+		Matiere c24 = new Matiere("espagnol",prof,iagi2);
+		Matiere c25 = new Matiere("Administration",prof,iagi1);
 	
 		
 		cours.add(c1);
@@ -147,7 +161,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		System.out.println("first one "+creneau.size());
 		creneau.add(cr11);
 		creneau.add(cr12);
-		creneau.add(cr14);
+		creneau.add(cr14); 
 		creneau.add(cr15);
 		creneau.add(cr16);
 		creneau.add(cr17);
@@ -161,31 +175,35 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		System.out.println("third one "+creneau.size());
 		ob4.saveAll(creneau);
 		
-		emp1.genererEmploi(cours, creneau);
 		HashMap<Matiere, Creneau> schedule = new HashMap<Matiere, Creneau>();
+		schedule = emp1.genererEmploi(cours, creneau);
+		ob6.save(emp1);
 		
-		schedule=emp1.getSchedule();
 		int counterr=0;
 		for(Matiere cours1: cours) {
 			
+			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
 			int sTime=schedule.get(cours1).getStartTime();
+			System.out.println(cours1.getName());
 			int eTime=schedule.get(cours1).getEndTime();
 			String day=schedule.get(cours1).getDay();
 			
-			String namC = cours1.getName();
-			String profC = cours1.getProf();
-			
-			Professeur p1= new Professeur(profC);
-			
-			ob2.save(p1);
-			Seance s1=new Seance(sTime,eTime,day,cours1,p1);
+			Professeur profC = cours1.getProfesseur();
+
+			Seance s1=new Seance(sTime,eTime,day,cours1,profC,emp1);
 			
 			
 			schedule.put(cours1, creneau.get(counterr));
 			counterr++;
 			System.out.println(counterr);
 			System.out.println(creneau.size());
+			System.out.println("ended this ull ma fr");
+
+		
 			ob1.save(s1);
+			System.out.println("saved");
+			}
+
 		}
 		
 		
