@@ -38,13 +38,14 @@ public class Emploi {
     @JoinColumn(name = "idClasse")
 	private Classe classe;
     
-	
+	public Emploi() {
+		super();
+	}
+    
 	public Emploi(int semester,Classe classe) {
 		this.setSemester(semester);
 		this.setClasse(classe);
 	}
-	
-	
 	
 	public int getSemester() {
 		return semester;
