@@ -89,11 +89,11 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c18 = new Matiere("espagnol",prof,iagi2);
 		Matiere c19 = new Matiere("Administration",prof,iagi2);
 		Matiere c20 = new Matiere("jee",prof,iagi2);
-		Matiere c21 = new Matiere("Algebre 1",prof,api1);
+		/*Matiere c21 = new Matiere("Algebre 1",prof,api1);
 		Matiere c22 = new Matiere("Design pattern",prof,iagi2);
 		Matiere c23= new Matiere("Anglais",prof,api1);
 		Matiere c24 = new Matiere("espagnol",prof,iagi2);
-		Matiere c25 = new Matiere("Administration",prof,iagi1);
+		Matiere c25 = new Matiere("Administration",prof,iagi1);*/
 	
 		
 		cours.add(c1);

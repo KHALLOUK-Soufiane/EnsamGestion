@@ -13,7 +13,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import SpringProject.EnsamCasa.matiere.Matiere;
-import SpringProject.EnsamCasa.salle.Salle;
 import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.creneau.Creneau;
 
@@ -44,11 +43,14 @@ public class Emploi {
 		this.setSemester(semester);
 		this.setClasse(classe);
 	}
-
+	
+	
+	
 	public int getSemester() {
 		return semester;
 	}
-
+	
+	
 	public void setSemester(int semester) {
 		this.semester = semester;
 	}
