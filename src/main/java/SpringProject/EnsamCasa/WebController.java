@@ -45,7 +45,7 @@ public class WebController {
 	@GetMapping("/professeurs")
 	public String professeurs(Model model) {
 		List<Professeur> professeurs = professeurController.getProfs();
-		model.addAttribute("professeurs", professeurs);
+		model.addAttribute("profs", professeurs);
 		return "professeurs";
 	}
 	
@@ -85,6 +85,7 @@ public class WebController {
 		model.addAttribute("etudiant", etu);
 		return "ajouterEtudiant";
 	}
+	
 	@GetMapping("/ajouterProfesseur")
 	public String ajouterProfesseur(Model model) {
 		Professeur prof = new Professeur();
@@ -104,8 +105,9 @@ public class WebController {
 		etudiantController.registerNewEtudiant(etu);
 		return "redirect:etudiants";
 	}
+	
 	@PostMapping("/ajouterProfesseur")
-	public String ajouterSallePost(@ModelAttribute("professeur") Professeur prof) {
+	public String ajouterProfesseurPost(@ModelAttribute("professeur") Professeur prof) {
 		professeurController.registerNewProf(prof);
 		return "redirect:professeurs";
 	}
@@ -126,6 +128,12 @@ public class WebController {
 	public String deleteSalle(@RequestParam Long id) {
 		salleController.deleteSalle(id);
 		return "redirect:salles";
+	}
+
+	@PostMapping("/deleteProfesseur")
+	public String deleteProfesseur(@RequestParam Long id) {
+		professeurController.deleteProfesseur(id);
+		return "redirect:professeurs";
 	}
 	
 

@@ -35,114 +35,30 @@
                       <th></th>
                     </thead>
                     <tbody>
-                      
+                      <c:forEach var="prof" items="${profs}">
                         <tr>
                         <td>
-                          bk1234
+                          ${prof.CIN}
                         </td>
                         <td>
-                          Prof
+                          ${prof.nom}
                         </td>
                         <td>
-                          Prof
+                          ${prof.prenom}
                         </td>
                         <td>
-                          prof@gmail.com
-                        </td>
-                        <td>
-                          0666666666	
+                          ${prof.email}
                         </td>
                         <td>
                     	<button class="btn btn-primary">Modifier</button>
-                    	<button class="btn btn-danger">Supprimer</button>
+                    	<form action="/deleteProfesseur" method="post">
+                    		<input type="hidden" value="${prof.id}" name="id">
+                    		<input type="submit" class="btn btn-danger" value="Supprimer">
+                    	</form>
+                    	
                     	</td>
                       </tr>
-                       <tr>
-                        <td>
-                          bk1234
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          prof@gmail.com
-                        </td>
-                        <td>
-                          0666666666	
-                        </td>
-                        <td>
-                    	<button class="btn btn-primary">Modifier</button>
-                    	<button class="btn btn-danger">Supprimer</button>
-                    	</td>
-                      </tr>
-                       <tr>
-                        <td>
-                          bk1234
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          prof@gmail.com
-                        </td>
-                        <td>
-                          0666666666	
-                        </td>
-                        <td>
-                    	<button class="btn btn-primary">Modifier</button>
-                    	<button class="btn btn-danger">Supprimer</button>
-                    	</td>
-                      </tr>
-                       <tr>
-                        <td>
-                          bk1234
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          prof@gmail.com
-                        </td>
-                        <td>
-                          0666666666	
-                        </td>
-                        <td>
-                    	<button class="btn btn-primary">Modifier</button>
-                    	<button class="btn btn-danger">Supprimer</button>
-                    	</td>
-                      </tr>
-                       <tr>
-                        <td>
-                          bk1234
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          Prof
-                        </td>
-                        <td>
-                          prof@gmail.com
-                        </td>
-                        <td>
-                          0666666666	
-                        </td>
-                        <td>
-                    	<button class="btn btn-primary">Modifier</button>
-                    	<button class="btn btn-danger">Supprimer</button>
-                    	</td>
-                      </tr>
-                     
-
+                      </c:forEach>
                     </tbody>
                   </table>
                 </div>
