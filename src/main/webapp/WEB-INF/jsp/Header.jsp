@@ -33,14 +33,14 @@
         <a href="" class="simple-text logo-mini">
           EG
         </a>
-        <a href="/" class="simple-text logo-normal">
+        <a href="index" class="simple-text logo-normal">
           ENSAM GESTION
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="/home">
+            <a href="home">
               <i class="now-ui-icons design_app"></i>
               <p>Home</p>
             </a>
@@ -58,11 +58,18 @@
           
           <li>
             <a href="etudiants">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="now-ui-icons education_hat"></i>
               <p>Liste des étudiants</p>
             </a>
           </li>
-         
+          
+         <li>
+            <a href="professeurs">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Liste des professeurs</p>
+            </a>
+          </li>
+          
           <li>
             <a href="salles">
               <i class="now-ui-icons tech_mobile"></i>

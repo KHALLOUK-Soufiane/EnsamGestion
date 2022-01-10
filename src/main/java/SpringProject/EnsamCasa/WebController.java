@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import SpringProject.EnsamCasa.etudiant.Etudiant;
 import SpringProject.EnsamCasa.etudiant.EtudiantController;
+import SpringProject.EnsamCasa.professeur.Professeur;
+import SpringProject.EnsamCasa.professeur.ProfesseurController;
 import SpringProject.EnsamCasa.salle.Salle;
 import SpringProject.EnsamCasa.salle.SalleController;
 import SpringProject.EnsamCasa.seance.Seance;
@@ -20,6 +22,7 @@ public class WebController {
 	@Autowired EtudiantController etudiantController;
 	@Autowired SalleController salleController;
 	@Autowired SeanceController seanceController;
+	@Autowired ProfesseurController professeurController;
 
 	
 	@GetMapping("/")
@@ -37,6 +40,13 @@ public class WebController {
 		List<Etudiant> etudiants = etudiantController.getEtudiants();
 		model.addAttribute("etudiants", etudiants);
 		return "etudiants";
+	}
+	
+	@GetMapping("/professeurs")
+	public String professeurs(Model model) {
+		List<Professeur> professeurs = professeurController.getProfs();
+		model.addAttribute("professeurs", professeurs);
+		return "professeurs";
 	}
 	
 	@GetMapping("/emplois")
@@ -75,6 +85,12 @@ public class WebController {
 		model.addAttribute("etudiant", etu);
 		return "ajouterEtudiant";
 	}
+	@GetMapping("/ajouterProfesseur")
+	public String ajouterProfesseur(Model model) {
+		Professeur prof = new Professeur();
+		model.addAttribute("professeur", prof);
+		return "ajouterProfesseur";
+	}
 
 	@GetMapping("/ajouterSalle")
 	public String ajouterSalle(Model model) {
@@ -87,6 +103,11 @@ public class WebController {
 	public String ajouterEtudiantPost(@ModelAttribute("etudiant") Etudiant etu) {
 		etudiantController.registerNewEtudiant(etu);
 		return "redirect:etudiants";
+	}
+	@PostMapping("/ajouterProfesseur")
+	public String ajouterSallePost(@ModelAttribute("professeur") Professeur prof) {
+		professeurController.registerNewProf(prof);
+		return "redirect:professeurs";
 	}
 	
 	@PostMapping("/ajouterSalle")
@@ -106,4 +127,6 @@ public class WebController {
 		salleController.deleteSalle(id);
 		return "redirect:salles";
 	}
+	
+
 }
