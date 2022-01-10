@@ -40,14 +40,14 @@ public class WebController {
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model) {
+	public String emplois(Model model, @RequestParam String filiere) {
 		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
 		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");
 		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi");
 		List<Seance> seancesJ = seanceController.getSeancesByDay("Jeudi");
 		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi");
-
-
+		
+		model.addAttribute("filiere", filiere);
 		model.addAttribute("seancesL", seancesL);
 		model.addAttribute("seancesM", seancesM);
 		model.addAttribute("seancesMe", seancesMe);
