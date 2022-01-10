@@ -7,10 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import SpringProject.EnsamCasa.matiere.Matiere;
+import SpringProject.EnsamCasa.salle.Salle;
+import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.creneau.Creneau;
 
 
@@ -30,12 +34,15 @@ public class Emploi {
 			)
 	private Long id;
 	private int semester;
-	private String filiere;
-	private HashMap<Matiere, Creneau> schedule = new HashMap<Matiere, Creneau>();
+
+    @ManyToOne
+    @JoinColumn(name = "idClasse")
+	private Classe classe;
+    
 	
-	public Emploi(int semester,String filiere) {
+	public Emploi(int semester,Classe classe) {
 		this.setSemester(semester);
-		this.setFiliere(filiere);
+		this.setClasse(classe);
 	}
 
 	public int getSemester() {
@@ -46,15 +53,16 @@ public class Emploi {
 		this.semester = semester;
 	}
 
-	public String getFiliere() {
-		return filiere;
+	public Classe getClasse() {
+		return classe;
 	}
 
-	public void setFiliere(String filiere) {
-		this.filiere = filiere;
+	public void setClasse(Classe classe) {
+		this.classe = classe;
 	}
 	
-	public void genererEmploi(ArrayList<Matiere> courses,ArrayList<Creneau> creneaux) {
+	@SuppressWarnings("unchecked")
+	public HashMap<Matiere, Creneau> genererEmploi(ArrayList<Matiere> courses,ArrayList<Creneau> creneaux) {
 		HashMap<Matiere, Creneau> schedule = new HashMap<Matiere, Creneau>();
 		ArrayList<Creneau> shallowCreneau = new ArrayList<Creneau>();
 		shallowCreneau = (ArrayList<Creneau>) creneaux.clone();
@@ -62,22 +70,21 @@ public class Emploi {
 		//Iterator iterCreneaux = creneaux.iterator();
 		int counterr=0;
 		for(Matiere cours: courses) {
+			//pick only courses in the required filiere 
 			
-			schedule.put(cours, shallowCreneau.get(counterr));		
-			shallowCreneau.remove(counterr);
+			if(classe.getFiliere() == cours.getClasse().getFiliere() && classe.getNiveau() == cours.getClasse().getNiveau()) {
+				schedule.put(cours, shallowCreneau.get(counterr));	
+				shallowCreneau.remove(counterr); 
+
+				
+			}
+			
 			
 		}
-		this.setSchedule(schedule);
-		return;
+		return schedule;
 		
 	}
 
-	public HashMap<Matiere, Creneau> getSchedule() {
-		return schedule;
-	}
 
-	public void setSchedule(HashMap<Matiere, Creneau> schedule) {
-		this.schedule = schedule;
-	}
 }
 

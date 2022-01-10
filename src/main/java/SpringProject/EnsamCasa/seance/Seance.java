@@ -2,6 +2,7 @@ package SpringProject.EnsamCasa.seance;
 
 import javax.persistence.*;
 
+import SpringProject.EnsamCasa.emploi.Emploi;
 import SpringProject.EnsamCasa.matiere.Matiere;
 import SpringProject.EnsamCasa.professeur.Professeur;
 import SpringProject.EnsamCasa.salle.Salle;
@@ -33,6 +34,10 @@ public class Seance {
     @JoinColumn(name = "idProf")
     private Professeur professeur;
     
+    @ManyToOne
+    @JoinColumn(name = "idEmploi")
+    private Emploi emploi;
+    
 	public Salle getSalle() {
 		return salle;
 	}
@@ -45,6 +50,14 @@ public class Seance {
 		super();
 	}
 
+	public Emploi getEmploi() {
+		return emploi;
+	}
+
+	public void setEmploi(Emploi emploi) {
+		this.emploi = emploi;
+	}
+
 	public Seance(Integer heurDeb, Integer heurFin, String jour, Salle salle, Matiere matiere, Professeur professeur) {
 		super();
 		this.heurDeb = heurDeb;
@@ -55,8 +68,9 @@ public class Seance {
 		this.professeur = professeur;
 	}
 	
-	public Seance(Integer heurDeb, Integer heurFin, String jour, Matiere matiere, Professeur professeur) {
+	public Seance(Integer heurDeb, Integer heurFin, String jour, Matiere matiere, Professeur professeur, Emploi emploi) {
 		super();
+		this.emploi=emploi;
 		this.heurDeb = heurDeb;
 		this.heurFin = heurFin;
 		this.jour = jour;
