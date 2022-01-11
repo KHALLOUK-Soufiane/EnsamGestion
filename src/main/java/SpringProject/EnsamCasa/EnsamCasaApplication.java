@@ -67,7 +67,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
 		Emploi emp1 = new Emploi(1,iagi1);
 		
-		Professeur prof=new Professeur("zakrani");
+		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "test@email.com", "1234567890");
 		ob2.save(prof);
 		Matiere c1 = new Matiere("php",prof,iagi1);
 		Matiere c2 = new Matiere("html",prof,iagi1);

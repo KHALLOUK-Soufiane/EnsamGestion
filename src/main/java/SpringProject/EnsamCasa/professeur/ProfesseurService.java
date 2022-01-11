@@ -22,4 +22,8 @@ public class ProfesseurService {
 	public void addNewProf(Professeur professeur) {
 		professeurRepository.save(professeur);
 	}
+	
+	public void deleteProfesseur(Long id) {
+		professeurRepository.deleteById(id);
+	}
 }
