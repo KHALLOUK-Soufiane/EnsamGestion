@@ -50,7 +50,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model, @RequestParam String filiere) {
+	public String emplois(Model model, @RequestParam(required=true,defaultValue="IAGI1") String filiere) {
 		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
 		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");
 		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi");
