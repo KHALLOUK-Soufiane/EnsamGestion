@@ -33,7 +33,7 @@
         <a href="" class="simple-text logo-mini">
           EG
         </a>
-        <a href="/" class="simple-text logo-normal">
+        <a href="index" class="simple-text logo-normal">
           ENSAM GESTION
         </a>
       </div>
@@ -50,9 +50,7 @@
 
           
            <li>
-
-            <a href="emplois?filiere=IAGI1">
-
+            <a href="emplois">
               <i class="now-ui-icons files_single-copy-04"></i>
               <p>Liste des emplois</p>
             </a>

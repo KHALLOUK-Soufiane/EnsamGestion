@@ -42,6 +42,7 @@ public class Emploi {
 		super();
 	}
     
+
 	public Emploi(int semester,Classe classe) {
 		this.setSemester(semester);
 		this.setClasse(classe);
