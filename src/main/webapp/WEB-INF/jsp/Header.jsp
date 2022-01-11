@@ -50,7 +50,7 @@
 
           
            <li>
-            <a href="emplois">
+            <a href="emplois?filiere=IAGI">
               <i class="now-ui-icons files_single-copy-04"></i>
               <p>Liste des emplois</p>
             </a>
