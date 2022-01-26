@@ -50,12 +50,14 @@
                           ${prof.email}
                         </td>
                         <td>
-                    	<button class="btn btn-primary">Modifier</button>
+                        <form action="/modifierProfesseur" method="get">
+                    		<input type="hidden" value="${prof.id}" name="id">
+                    		<input type="submit" class="btn btn-primary" value="Modifier">
+                    	</form>
                     	<form action="/deleteProfesseur" method="post">
                     		<input type="hidden" value="${prof.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">
                     	</form>
-                    	
                     	</td>
                       </tr>
                       </c:forEach>

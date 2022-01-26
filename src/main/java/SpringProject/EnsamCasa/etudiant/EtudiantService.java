@@ -32,4 +32,20 @@ public class EtudiantService {
 	public void deleteEtudiant(Long id) {
 		etudiantRepository.deleteById(id);
 	}
+	
+	public void updateEtudiant(Long id, Etudiant etu) {
+		if (etudiantRepository.findById(id).isPresent()){
+			Etudiant existingEtudiant = etudiantRepository.findById(id).get();
+
+			existingEtudiant.setCode_apogee(etu.getCode_apogee());
+			existingEtudiant.setNiveau(etu.getNiveau());
+			existingEtudiant.setNom(etu.getNom());
+			existingEtudiant.setPrenom(etu.getPrenom());
+			existingEtudiant.setTel(etu.getTel());
+			existingEtudiant.setEmail(etu.getEmail());
+			existingEtudiant.setDateNaiss(etu.getDateNaiss());
+
+            etudiantRepository.save(existingEtudiant);
+        }
+	}
 }

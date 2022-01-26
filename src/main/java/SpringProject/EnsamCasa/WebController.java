@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.*;
 
 import SpringProject.EnsamCasa.etudiant.Etudiant;
 import SpringProject.EnsamCasa.etudiant.EtudiantController;
+import SpringProject.EnsamCasa.etudiant.EtudiantRepository;
+import SpringProject.EnsamCasa.etudiant.EtudiantService;
 import SpringProject.EnsamCasa.professeur.Professeur;
 import SpringProject.EnsamCasa.professeur.ProfesseurController;
+import SpringProject.EnsamCasa.professeur.ProfesseurRepository;
+import SpringProject.EnsamCasa.professeur.ProfesseurService;
 import SpringProject.EnsamCasa.salle.Salle;
 import SpringProject.EnsamCasa.salle.SalleController;
+import SpringProject.EnsamCasa.salle.SalleRepository;
+import SpringProject.EnsamCasa.salle.SalleService;
 import SpringProject.EnsamCasa.seance.Seance;
 import SpringProject.EnsamCasa.seance.SeanceController;
+import SpringProject.EnsamCasa.seance.SeanceService;
 
 @Controller
 public class WebController {
@@ -23,6 +30,13 @@ public class WebController {
 	@Autowired SalleController salleController;
 	@Autowired SeanceController seanceController;
 	@Autowired ProfesseurController professeurController;
+	@Autowired EtudiantService etudiantService;
+	@Autowired EtudiantRepository etudiantRepository;
+	@Autowired ProfesseurRepository professeurRepository;
+	@Autowired SalleRepository salleRepository;
+	@Autowired SalleService salleService;
+	@Autowired SeanceService seanceService;
+	@Autowired ProfesseurService professeurService;
 
 	
 	@GetMapping("/")
@@ -136,5 +150,47 @@ public class WebController {
 		return "redirect:professeurs";
 	}
 	
+	@GetMapping("/modifierEtudiant")
+	public String modifierEtudiant(Model model, @RequestParam Long id) {
+		Etudiant etu = new Etudiant();
+		model.addAttribute("etudiant", etu);
+		model.addAttribute("etudiantExistant", etudiantRepository.findById(id).get());
+		model.addAttribute("filiere", etudiantRepository.findById(id).get().getNiveau());
+		return "modifierEtudiant";
+	}
+	
+	@PostMapping("/modifierEtudiant")
+	public String modifierEtudiantPost(@ModelAttribute("etudiant") Etudiant etu) {
+		etudiantService.updateEtudiant(etu.getId(), etu);
+		return "redirect:etudiants";
+	}
+	
+	@GetMapping("/modifierProfesseur")
+	public String modifierProfesseur(Model model, @RequestParam Long id) {
+		Professeur prof = new Professeur();
+		model.addAttribute("professeur", prof);
+		model.addAttribute("professeurExistant", professeurRepository.findById(id).get());
+		return "modifierProfesseur";
+	}
+	
+	@PostMapping("/modifierProfesseur")
+	public String modifierProfesseurPost(@ModelAttribute("professeur") Professeur prof) {
+		professeurService.updateProfesseur(prof.getId(), prof);
+		return "redirect:professeurs";
+	}
+	
+	@GetMapping("/modifierSalle")
+	public String modifierSalle(Model model, @RequestParam Long id) {
+		Salle salle = new Salle();
+		model.addAttribute("salle", salle);
+		model.addAttribute("salleExistante", salleRepository.findById(id).get());
+		return "modifierSalle";
+	}
+	
+	@PostMapping("/modifierSalle")
+	public String modifierSallePost(@ModelAttribute("Salle") Salle salle) {
+		salleService.updateSalle(salle.getId(), salle);
+		return "redirect:salles";
+	}
 
 }

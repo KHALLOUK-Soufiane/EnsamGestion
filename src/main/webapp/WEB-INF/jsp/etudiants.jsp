@@ -27,7 +27,7 @@
                         Prenom
                       </th>
                       <th>
-                        Email
+                        Niveau
                       </th>
                       <th></th>
                     </tr>
@@ -45,10 +45,13 @@
                           ${etu.prenom}
                         </td>
                         <td>
-                          ${etu.email}
+                          ${etu.niveau}
                         </td>
                         <td>
-                    	<button class="btn btn-primary">Modifier</button>
+                        <form action="/modifierEtudiant" method="get">
+                    		<input type="hidden" value="${etu.id}" name="id">
+                    		<input type="submit" class="btn btn-primary" value="Modifier">
+                    	</form>
                     	<form action="/deleteEtudiant" method="post">
                     		<input type="hidden" value="${etu.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">

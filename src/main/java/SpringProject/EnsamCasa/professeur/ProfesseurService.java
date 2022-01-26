@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SpringProject.EnsamCasa.etudiant.Etudiant;
+
 @Service
 public class ProfesseurService {
 	private final ProfesseurRepository professeurRepository;
@@ -25,5 +27,19 @@ public class ProfesseurService {
 	
 	public void deleteProfesseur(Long id) {
 		professeurRepository.deleteById(id);
+	}
+
+	public void updateProfesseur(Long id, Professeur prof) {
+		if (professeurRepository.findById(id).isPresent()){
+			Professeur existingProfesseur = professeurRepository.findById(id).get();
+
+			existingProfesseur.setCIN(prof.getCIN());
+			existingProfesseur.setNom(prof.getNom());
+			existingProfesseur.setPrenom(prof.getPrenom());
+			existingProfesseur.setTel(prof.getTel());
+			existingProfesseur.setEmail(prof.getEmail());
+
+			professeurRepository.save(existingProfesseur);
+        }
 	}
 }
