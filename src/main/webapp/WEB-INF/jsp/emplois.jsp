@@ -8,8 +8,9 @@
               <div class="card-header">
               <div class="row">
               <div class="col-8"><h4 class="card-title"> Liste des emplois </h4></div>
+              <c:if test="${user.appUserRole == 'ADMIN' }">
               <div class="col-4"><button type="submit" form="filiereForm" class="btn btn-info">Generer un emplois</button></div>
-               
+               </c:if>
               </div>
               
               <c:if test="${user.appUserRole != 'PROFESSOR' }"> 
@@ -18,7 +19,7 @@
 	               <div class="col pr-1">
 						<form id="filiereForm" action="emplois" method="get">
 							<div class="form-group">
-								<label>Filiï¿½re:</label>
+								<label>Filière:</label>
 								<select class="form-select form-control" name="filiere">
 									<optgroup label="Filiere">
 									    <option value="IAGI1" ${filiere eq 'IAGI1' ? 'selected' : ''}>IAGI 1</option>
