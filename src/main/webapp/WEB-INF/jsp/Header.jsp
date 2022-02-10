@@ -39,24 +39,31 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
+           <c:if test="${user.appUserRole == 'ADMIN'}">
+        
           <li>
             <a href="home">
+            
               <i class="now-ui-icons design_app"></i>
+              
               <p>Home</p>
             </a>
           </li>
+			</c:if>
 
 
-
-          
+           <c:if test="${user.appUserRole != 'STUDENT'}">
+         
            <li>
-
             <a href="emplois?filiere=IAGI1">
-
               <i class="now-ui-icons files_single-copy-04"></i>
               <p>Liste des emplois</p>
             </a>
           </li>
+          
+          </c:if>
+          
+                     <c:if test="${user.appUserRole != 'STUDENT'}">
           
           <li>
             <a href="etudiants">
@@ -78,7 +85,7 @@
               <p>Liste des salles</p>
             </a>
           </li>
-          
+          </c:if>
         </ul>
       </div>
     </div>
