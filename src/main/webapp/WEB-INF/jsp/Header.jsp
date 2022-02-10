@@ -63,7 +63,7 @@
           
           </c:if>
           
-                     <c:if test="${user.appUserRole != 'STUDENT'}">
+          <c:if test="${user.appUserRole != 'STUDENT'}">
           
           <li>
             <a href="etudiants">
@@ -71,6 +71,14 @@
               <p>Liste des étudiants</p>
             </a>
           </li>
+                    <li>
+            <a href="salles">
+              <i class="now-ui-icons tech_mobile"></i>
+              <p>Liste des salles</p>
+            </a>
+          </li>
+          </c:if>
+          <c:if test="${user.appUserRole == 'ADMIN'}">
           
          <li>
             <a href="professeurs">
@@ -79,13 +87,18 @@
             </a>
           </li>
           
-          <li>
-            <a href="salles">
+          </c:if>
+
+          
+          <c:if test="${user.appUserRole == 'STUDENT'}">
+                                         <li>
+            <a href="Ressalles">
               <i class="now-ui-icons tech_mobile"></i>
-              <p>Liste des salles</p>
+              <p>reserver des salles</p>
             </a>
           </li>
           </c:if>
+          
         </ul>
       </div>
     </div>

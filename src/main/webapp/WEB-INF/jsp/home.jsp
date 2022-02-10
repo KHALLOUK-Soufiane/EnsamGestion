@@ -41,11 +41,13 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
+        <c:if test="${user == null }">
           <li class="nav-item">
             <a class="nav-link" href="login.jsp">
                Login
             </a>
           </li>
+          </c:if>
           <li class="nav-item">
             <a class="nav-link" href="#">
               Have an issue?
@@ -123,8 +125,10 @@
           </div>   
                  
           </div>
+          <c:if test="${user == null }">
           
           <a href="" class="btn btn-primary btn-round btn-lg">LOGIN NOW</a>
+          </c:if>
         </div>
       </div>
     </div>
