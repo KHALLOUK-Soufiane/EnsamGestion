@@ -198,7 +198,6 @@ public class EnsamCasaApplication implements CommandLineRunner{
 			counterr++;
 			System.out.println(counterr);
 			System.out.println(creneau.size());
-			System.out.println("ended this ull ma fr");
 
 		
 			ob1.save(s1);

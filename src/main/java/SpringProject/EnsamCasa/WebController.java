@@ -90,7 +90,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model, @RequestParam(required=true,defaultValue="IAGI1") String filiere) {
+	public String emplois(Model model, @RequestParam(required=false) String filiere) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser user = null;
 		if (principal instanceof AppUser) {
@@ -104,11 +104,13 @@ public class WebController {
 		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi");
 		
 		model.addAttribute("filiere", filiere);
-		model.addAttribute("seancesL", seancesL);
-		model.addAttribute("seancesM", seancesM);
-		model.addAttribute("seancesMe", seancesMe);
-		model.addAttribute("seancesJ", seancesJ);
-		model.addAttribute("seancesV", seancesV);
+		if(filiere != null) {
+			model.addAttribute("seancesL", seancesL);
+			model.addAttribute("seancesM", seancesM);
+			model.addAttribute("seancesMe", seancesMe);
+			model.addAttribute("seancesJ", seancesJ);
+			model.addAttribute("seancesV", seancesV);
+		}
 		
 		return "emplois";
 	}
