@@ -79,8 +79,6 @@ public class Emploi {
 			if(classe.getFiliere() == cours.getClasse().getFiliere() && classe.getNiveau() == cours.getClasse().getNiveau()) {
 				schedule.put(cours, shallowCreneau.get(counterr));	
 				shallowCreneau.remove(counterr); 
-
-				
 			}
 			
 			

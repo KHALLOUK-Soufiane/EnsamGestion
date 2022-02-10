@@ -8,10 +8,7 @@
               <div class="card-header">
               <div class="row">
               <div class="col-8"><h4 class="card-title"> Liste des emplois </h4></div>
-              
-              <c:if test="${user.appUserRole == 'ADMIN' }"> 
-              <div class="col-4"><a href="genererEmploi.jsp" class="btn btn-info">Generer un emplois</a></div>
-              </c:if>
+              <div class="col-4"><button type="submit" form="filiereForm" class="btn btn-info">Generer un emplois</button></div>
                
               </div>
               
@@ -19,9 +16,9 @@
               
                <div class="row">
 	               <div class="col pr-1">
-						<form action="emplois" method="get">
+						<form id="filiereForm" action="emplois" method="get">
 							<div class="form-group">
-								<label>Filière:</label>
+								<label>Filiï¿½re:</label>
 								<select class="form-select form-control" name="filiere">
 									<optgroup label="Filiere">
 									    <option value="IAGI1" ${filiere eq 'IAGI1' ? 'selected' : ''}>IAGI 1</option>
@@ -36,7 +33,6 @@
 									</optgroup>
 								</select>                
 							</div>
-			               	<input type="submit" value="Submit" class="btn btn-info"/>
 			          	</form>
                   	</div>    
 	              </div>

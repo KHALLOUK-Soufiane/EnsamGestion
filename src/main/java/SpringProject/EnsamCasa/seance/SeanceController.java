@@ -28,7 +28,7 @@ public class SeanceController {
 		seanceService.addNewSeance(seance);
 	}
 	
-	public List<Seance> getSeancesByDay(String day){
-		return seanceService.getSeancesDay(day);
+	public List<Seance> getSeancesByDay(String day, String filiere, Integer niveau){
+		return seanceService.getSeancesDay(day, filiere, niveau);
 	}
 }

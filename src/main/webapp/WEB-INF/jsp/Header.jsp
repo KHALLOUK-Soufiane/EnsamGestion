@@ -55,7 +55,7 @@
            <c:if test="${user.appUserRole != 'STUDENT'}">
          
            <li>
-            <a href="emplois?filiere=IAGI1">
+            <a href="emplois">
               <i class="now-ui-icons files_single-copy-04"></i>
               <p>Liste des emplois</p>
             </a>
