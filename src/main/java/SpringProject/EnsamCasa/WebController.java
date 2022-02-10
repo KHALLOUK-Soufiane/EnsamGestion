@@ -97,11 +97,16 @@ public class WebController {
 			user = (AppUser)principal;
 			}
 		model.addAttribute("user", user);
-		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
-		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");
-		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi");
-		List<Seance> seancesJ = seanceController.getSeancesByDay("Jeudi");
-		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi");
+		
+		
+		Integer niveau = Integer.parseInt(filiere.substring(filiere.length()-1));
+		filiere = filiere.substring(0, filiere.length()-1);
+		
+		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi", filiere, niveau+2);
+		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi", filiere, niveau+2);
+		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi", filiere, niveau+2);
+		List<Seance> seancesJ = seanceController.getSeancesByDay("Jeudi", filiere, niveau+2);
+		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi", filiere, niveau+2);
 		
 		model.addAttribute("filiere", filiere);
 		if(filiere != null) {

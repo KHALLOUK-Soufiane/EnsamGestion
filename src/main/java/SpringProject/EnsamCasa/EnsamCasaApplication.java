@@ -52,7 +52,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
     {
 		Etudiant student = new Etudiant("1562032", "2eme annee", "stuNom", "stuPrenom", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
         ob.save(student);
-        Salle s = new Salle("adskfjaldssalle",30,1);
+        Salle s = new Salle("Salle 1",30,1);
         ob3.save(s);
         Classe iagi1 = new Classe(3,"1ere annee IAGI","IAGI");
         ob7.save(iagi1);
@@ -66,6 +66,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		ArrayList<Matiere> cours = new ArrayList<Matiere>();
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
 		Emploi emp1 = new Emploi(1,iagi1);
+		Emploi emp2 = new Emploi(1,iagi2);
 		
 		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "test@email.com", "1234567890");
 		ob2.save(prof);
@@ -116,11 +117,6 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c18);
 		cours.add(c19);
 		cours.add(c20);
-		
-	
-		
-
-
 		
 		ob5.saveAll(cours);
 		Creneau cr1 = new Creneau(800,1000,"Lundi");
@@ -177,39 +173,37 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		
 		HashMap<Matiere, Creneau> schedule = new HashMap<Matiere, Creneau>();
 		schedule = emp1.genererEmploi(cours, creneau);
+		HashMap<Matiere, Creneau> schedule2 = new HashMap<Matiere, Creneau>();
+		schedule2 = emp2.genererEmploi(cours, creneau);
 		ob6.save(emp1);
+		ob6.save(emp2);
 		
-		int counterr=0;
-		for(Matiere cours1: cours) {
-			
-			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
-			int sTime=schedule.get(cours1).getStartTime();
-			System.out.println(cours1.getName());
-			int eTime=schedule.get(cours1).getEndTime();
-			String day=schedule.get(cours1).getDay();
-			
-			Professeur profC = cours1.getProfesseur();
-
-			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1);
-			
-			
-			schedule.put(cours1, creneau.get(counterr));
-			
-			counterr++;
-			System.out.println(counterr);
-			System.out.println(creneau.size());
-
-		
-			ob1.save(s1);
-			System.out.println("saved");
-			}
-
-		}
+		genererSeance(schedule, emp1, cours, creneau);
+		genererSeance(schedule2, emp2, cours, creneau);
 		
 		
-	//        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
+//        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
 //        ob2.save(y);
 //        Seance address = new Seance(8, 10, "Mardi", student, s, y);
 //        ob1.save(address);
     }
+	
+	public void genererSeance(HashMap<Matiere, Creneau> schedule, Emploi emp1, ArrayList<Matiere> cours, ArrayList<Creneau> creneau) {
+		int counterr=0;
+		for(Matiere cours1: cours) {
+			
+			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
+			Professeur profC = cours1.getProfesseur();
+
+			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1);
+		
+			schedule.put(cours1, creneau.get(counterr));
+			
+			counterr++;
+		
+			ob1.save(s1);
+			System.out.println("saved");
+			}
+		}
+	}
 }
