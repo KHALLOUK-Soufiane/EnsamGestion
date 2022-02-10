@@ -64,7 +64,7 @@
                           Lundi
                         </td>
                         <c:forEach var="sea" items="${seancesL}">
-	                        <c:if test="${sea.heurDeb == 1400}">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        </c:if>
 	                        <td>
@@ -81,7 +81,7 @@
                           Mardi
                         </td>
                         <c:forEach var="sea" items="${seancesM}">
-	                        <c:if test="${sea.heurDeb == 1400}">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        </c:if>
 	                        <td>
@@ -97,7 +97,7 @@
                           Mercredi
                         </td>
                         <c:forEach var="sea" items="${seancesMe}">
-	                        <c:if test="${sea.heurDeb == 1400}">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        </c:if>
 	                        <td>
@@ -112,7 +112,7 @@
                           Jeudi
                         </td>
                         <c:forEach var="sea" items="${seancesJ}">
-	                        <c:if test="${sea.heurDeb == 1400}">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        	                     
 	                        
@@ -129,7 +129,7 @@
                           Vendredi
                         </td>
                         <c:forEach var="sea" items="${seancesV}">
-	                        <c:if test="${sea.heurDeb == 1400}">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        </c:if>
 	                        <td>

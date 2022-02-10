@@ -190,10 +190,11 @@ public class EnsamCasaApplication implements CommandLineRunner{
 			
 			Professeur profC = cours1.getProfesseur();
 
-			Seance s1=new Seance(sTime,eTime,day,cours1,profC,emp1);
+			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1);
 			
 			
 			schedule.put(cours1, creneau.get(counterr));
+			
 			counterr++;
 			System.out.println(counterr);
 			System.out.println(creneau.size());
