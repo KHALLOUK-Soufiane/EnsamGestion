@@ -53,12 +53,24 @@ public class WebController {
 	}
 	
 	@GetMapping("/home")
-	public String home() {
+	public String home(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		return "home";
 	}
 	
 	@GetMapping("/etudiants")
 	public String etudiants(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Etudiant> etudiants = etudiantController.getEtudiants();
 		model.addAttribute("etudiants", etudiants);
 		return "etudiants";
@@ -66,6 +78,12 @@ public class WebController {
 	
 	@GetMapping("/professeurs")
 	public String professeurs(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Professeur> professeurs = professeurController.getProfs();
 		model.addAttribute("profs", professeurs);
 		return "professeurs";
@@ -73,6 +91,12 @@ public class WebController {
 	
 	@GetMapping("/emplois")
 	public String emplois(Model model, @RequestParam(required=true,defaultValue="IAGI1") String filiere) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
 		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");
 		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi");
@@ -90,12 +114,24 @@ public class WebController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		return "login";
 	}
 	
 	@GetMapping("/salles")
 	public String salles(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Salle> salles = salleController.getSalles();
 		model.addAttribute("salles", salles);
 		return "salles";
@@ -103,6 +139,12 @@ public class WebController {
 	
 	@GetMapping("/ajouterEtudiant")
 	public String ajouterEtudiant(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Etudiant etu = new Etudiant();
 		model.addAttribute("etudiant", etu);
 		return "ajouterEtudiant";
@@ -110,6 +152,12 @@ public class WebController {
 	
 	@GetMapping("/ajouterProfesseur")
 	public String ajouterProfesseur(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Professeur prof = new Professeur();
 		model.addAttribute("professeur", prof);
 		return "ajouterProfesseur";
@@ -117,6 +165,12 @@ public class WebController {
 
 	@GetMapping("/ajouterSalle")
 	public String ajouterSalle(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Salle salle = new Salle();
 		model.addAttribute("salle", salle);
 		return "ajouterSalle";
@@ -160,6 +214,12 @@ public class WebController {
 	
 	@GetMapping("/modifierEtudiant")
 	public String modifierEtudiant(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Etudiant etu = new Etudiant();
 		model.addAttribute("etudiant", etu);
 		model.addAttribute("etudiantExistant", etudiantRepository.findById(id).get());
@@ -175,6 +235,12 @@ public class WebController {
 	
 	@GetMapping("/modifierProfesseur")
 	public String modifierProfesseur(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Professeur prof = new Professeur();
 		model.addAttribute("professeur", prof);
 		model.addAttribute("professeurExistant", professeurRepository.findById(id).get());
@@ -189,6 +255,12 @@ public class WebController {
 	
 	@GetMapping("/modifierSalle")
 	public String modifierSalle(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Salle salle = new Salle();
 		model.addAttribute("salle", salle);
 		model.addAttribute("salleExistante", salleRepository.findById(id).get());

@@ -5,5 +5,4 @@ public enum AppUserRole {
 	ADMIN,
 	PROFESSOR,
 	STUDENT,
-	
 }
