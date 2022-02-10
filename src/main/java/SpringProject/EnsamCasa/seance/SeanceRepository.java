@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface SeanceRepository extends JpaRepository<Seance, Long>{
 	
-	@Query(value="SELECT * From Seance WHERE jour=?1",nativeQuery=true)
+	@Query(value="SELECT * From Seance s JOIN Creneau c ON s.id_creneau=c.id WHERE day=?1",nativeQuery=true)
 	List<Seance> findSeanceByDay(String Day);
 
 }

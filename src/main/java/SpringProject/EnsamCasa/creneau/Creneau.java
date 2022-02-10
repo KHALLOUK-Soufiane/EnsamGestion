@@ -25,6 +25,10 @@ public class Creneau {
 		private int endTime;
 		private String day;
 		
+		public Creneau() {
+			
+		}
+		
 		public Creneau(int startTime,int endTime,String day) {
 			this.setStartTime(startTime);
 			this.setEndTime(endTime);

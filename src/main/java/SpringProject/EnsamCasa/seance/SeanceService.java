@@ -24,6 +24,7 @@ public class SeanceService {
 	}
 	
 	public List<Seance> getSeancesDay(String day){
+		System.out.println(seanceRepository.findSeanceByDay(day));
 		return seanceRepository.findSeanceByDay(day);
 	}
 }
