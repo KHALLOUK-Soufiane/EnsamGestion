@@ -33,6 +33,7 @@ public class AppUser implements UserDetails{
 	private Long id;
 	private String firstName;
 	private String lastName;
+	private String CIN;
 	private String password;
 	private String email;
 	@Enumerated(EnumType.STRING)
@@ -156,6 +157,14 @@ public class AppUser implements UserDetails{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCIN() {
+		return CIN;
+	}
+
+	public void setCIN(String cIN) {
+		CIN = cIN;
 	}
 
 

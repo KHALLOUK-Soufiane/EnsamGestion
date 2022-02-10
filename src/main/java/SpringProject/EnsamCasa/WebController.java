@@ -96,6 +96,7 @@ public class WebController {
 		if (principal instanceof AppUser) {
 			user = (AppUser)principal;
 			}
+	
 		model.addAttribute("user", user);
 		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
 		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");

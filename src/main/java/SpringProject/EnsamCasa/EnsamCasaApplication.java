@@ -68,11 +68,13 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Emploi emp1 = new Emploi(1,iagi1);
 		
 		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "test@email.com", "1234567890");
+		Professeur prof2= new Professeur("H2233","Elfaquih","Loubna","Elfaquih@email.com","061231231");
 		ob2.save(prof);
+		ob2.save(prof2);
 		Matiere c1 = new Matiere("php",prof,iagi1);
 		Matiere c2 = new Matiere("html",prof,iagi1);
 		Matiere c3 = new Matiere("mongodb",prof,iagi2);
-		Matiere c4 = new Matiere("merise",prof,iagi1);
+		Matiere c4 = new Matiere("merise",prof2,iagi1);
 		Matiere c5 = new Matiere("Linux",prof,iagi1);
 		Matiere c6 = new Matiere("java",prof,iagi1);
 		Matiere c7 = new Matiere("oracle",prof,iagi2);
@@ -80,7 +82,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c9 = new Matiere("Analyse data",prof,iagi2);
 		Matiere c10 = new Matiere("sport",prof,iagi1);
 		Matiere c11 = new Matiere("securite",prof,iagi2);
-		Matiere c12 = new Matiere("python",prof,iagi1);
+		Matiere c12 = new Matiere("python",prof2,iagi1);
 		Matiere c14 = new Matiere("Analyse 1",prof,api1);
 		Matiere c13 = new Matiere("Algebre 2",prof,api1);
 		Matiere c15 = new Matiere("Algebre 1",prof,api1);
