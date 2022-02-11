@@ -25,7 +25,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color=red>
+    <div class="sidebar" data-color=blue>
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -122,16 +122,8 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+                            <p>BONJOUR ${user.firstName}</p>
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="">

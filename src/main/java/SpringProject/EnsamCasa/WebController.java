@@ -49,7 +49,7 @@ public class WebController {
 			user = (AppUser)principal;
 			}
 		model.addAttribute("user", user);
-		return "index";
+		return "home";
 	}
 	
 	@GetMapping("/home")
