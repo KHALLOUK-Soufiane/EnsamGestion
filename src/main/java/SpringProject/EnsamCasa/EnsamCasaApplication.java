@@ -20,6 +20,8 @@ import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.creneau.CreneauRepository;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmp;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmpRepository;
 import SpringProject.EnsamCasa.emploi.Emploi;
 import SpringProject.EnsamCasa.emploi.EmploiRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
@@ -46,6 +48,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired EmploiRepository ob6;
     @Autowired ClasseRepository ob7;
     @Autowired AppUserRepository ob8;
+    @Autowired DemandeEmpRepository ob9;
 
 
 
@@ -57,23 +60,36 @@ public class EnsamCasaApplication implements CommandLineRunner{
 	@Override
     public void run(String... args) throws Exception
     {
-		Etudiant student = new Etudiant("1562032", "2eme annee", "stuNom", "stuPrenom", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student = new Etudiant("1562032", "2eme annee", "KHALLOUK", "Soufiane", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student2 = new Etudiant("5132104", "2eme annee", "ALOUI", "Yahya", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student3 = new Etudiant("9785462", "2eme annee", "MAKOUAR", "Ali", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
         ob.save(student);
+        ob.save(student2);
+        ob.save(student3);
         Salle s = new Salle("Salle 1",30,1);
         Salle s2 = new Salle("Salle 2",30,1);
         Salle s3 = new Salle("Salle 3",30,1);
         Salle s4 = new Salle("Salle 4",30,1);
         Salle s5 = new Salle("Salle 5",30,1);
+        Salle s6 = new Salle("Salle 6",30,1);
+        Salle s7 = new Salle("Salle 7",30,1);
+        Salle s8 = new Salle("Salle 8",30,1);
+        Salle s9 = new Salle("Salle 9",30,1);
+        Salle s10 = new Salle("Salle 10",30,1);
         ob3.save(s);
         ob3.save(s2);
         ob3.save(s3);
         ob3.save(s4);
         ob3.save(s5);
+        
+        
+        // ajout des classes
         Classe iagi1 = new Classe(3,"1ere annee IAGI","IAGI");
         ob7.save(iagi1);
         Classe iagi2 = new Classe(4,"2eme annee IAGI","IAGI");
         ob7.save(iagi2);
-
+        
+        
         Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
         ob7.save(api1);
 
@@ -98,14 +114,27 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Emploi emp1 = new Emploi(1,iagi1);
 		Emploi emp2 = new Emploi(1,iagi2);
 		
+		// ajout des professeurs
 		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "zakrani@email.com", "1234567890");
 		Professeur prof2= new Professeur("H223153","Elfaquih","Loubna","Elfaquih@email.com","061231231");
 		Professeur prof3= new Professeur("FR874521","Chergui","Adil","Chergui@email.com","134568754");
-		Professeur prof4= new Professeur("VB125487","Hain","Mustapha","Hain@email.com","061231231");
+		Professeur prof4= new Professeur("VB125487","Bahnass","Ayoub","Bahnass@email.com","061231231");
+		Professeur prof5= new Professeur("VR129787","Moutachaouik","Mohammed","Moutachaouik@email.com","0661328199");
+		Professeur prof6= new Professeur("UI187987","Alami","Mustapha","Alami@email.com","0611238973");
+		Professeur prof7= new Professeur("JU986212","Elkebch","Ali","Elkebch@email.com","0611312391");
+		Professeur prof8= new Professeur("CV978456","Laaraj","Ahmed","Laaraj@email.com","0616238231");
+
 		ob2.save(prof);
 		ob2.save(prof2);
 		ob2.save(prof3);
 		ob2.save(prof4);
+		ob2.save(prof5);
+		ob2.save(prof6);
+		ob2.save(prof7);
+		ob2.save(prof8);
+
+		
+		// ajout des matieres
 		Matiere c1 = new Matiere("php",prof3,iagi1);
 		Matiere c2 = new Matiere("html",prof,iagi1);
 		Matiere c3 = new Matiere("mongodb",prof,iagi2);
@@ -140,8 +169,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c32 = new Matiere("Communication",prof2,iagi1);
 		Matiere c33 = new Matiere("Administration",prof3,iagi1);
 		
-		System.out.println("teeeest="+c5.getProfesseur().getCIN());
-		
+		// ajout des cours
 		cours.add(c1);
 		cours.add(c2);
 		cours.add(c3);
@@ -240,8 +268,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		ob6.save(emp1);
 		ob6.save(emp2);
 		
-		genererSeance(schedule, emp1, cours, creneau);
-		genererSeance(schedule2, emp2, cours, creneau);
+		genererSeance(schedule, emp1, cours, creneau,(ArrayList<Salle>) ob3.findAll());
+		genererSeance(schedule2, emp2, cours, creneau,(ArrayList<Salle>) ob3.findAll());
 		
 		
 //        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
@@ -250,14 +278,18 @@ public class EnsamCasaApplication implements CommandLineRunner{
 //        ob1.save(address);
     }
 	
-	public void genererSeance(HashMap<Matiere, Creneau> schedule, Emploi emp1, ArrayList<Matiere> cours, ArrayList<Creneau> creneau) {
+	public void genererSeance(HashMap<Matiere, Creneau> schedule, Emploi emp1, ArrayList<Matiere> cours, ArrayList<Creneau> creneau,ArrayList<Salle> s) {
 		int counterr=0;
 		for(Matiere cours1: cours) {
 			
 			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
 			Professeur profC = cours1.getProfesseur();
-
-			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1);
+			
+			//pick a random room
+			Salle randomSalle = s.get((int)(Math.random() * s.size()));
+			
+			System.out.println("size"+(int)(Math.random() *s.size()));
+			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1,randomSalle);
 		
 			schedule.put(cours1, creneau.get(counterr));
 			

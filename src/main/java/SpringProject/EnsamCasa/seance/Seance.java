@@ -67,12 +67,13 @@ public class Seance {
 		this.professeur = professeur;
 	}
 	
-	public Seance(Creneau creneau, Matiere matiere, Professeur professeur, Emploi emploi) {
+	public Seance(Creneau creneau, Matiere matiere, Professeur professeur, Emploi emploi,Salle salle) {
 		super();
 		this.emploi=emploi;
 		this.creneau = creneau;
 		this.matiere = matiere;
 		this.professeur = professeur;
+		this.salle = salle;
 	}
 
 	public Seance(Long id, Creneau creneau, Salle salle, Matiere matiere,
