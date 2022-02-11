@@ -71,6 +71,11 @@ public class EnsamCasaApplication implements CommandLineRunner{
         Salle s3 = new Salle("Salle 3",30,1);
         Salle s4 = new Salle("Salle 4",30,1);
         Salle s5 = new Salle("Salle 5",30,1);
+        Salle s6 = new Salle("Salle 6",30,1);
+        Salle s7 = new Salle("Salle 7",30,1);
+        Salle s8 = new Salle("Salle 8",30,1);
+        Salle s9 = new Salle("Salle 9",30,1);
+        Salle s10 = new Salle("Salle 10",30,1);
         ob3.save(s);
         ob3.save(s2);
         ob3.save(s3);
@@ -114,10 +119,10 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Professeur prof2= new Professeur("H223153","Elfaquih","Loubna","Elfaquih@email.com","061231231");
 		Professeur prof3= new Professeur("FR874521","Chergui","Adil","Chergui@email.com","134568754");
 		Professeur prof4= new Professeur("VB125487","Bahnass","Ayoub","Bahnass@email.com","061231231");
-		Professeur prof5= new Professeur("VB125487","Moutachaouik","Mohammed","Moutachaouik@email.com","0661328199");
-		Professeur prof6= new Professeur("VB125487","Alami","Mustapha","Alami@email.com","0611238973");
-		Professeur prof7= new Professeur("VB125487","Elkebch","Ali","Elkebch@email.com","0611312391");
-		Professeur prof8= new Professeur("VB125487","Laaraj","Ahmed","Laaraj@email.com","0616238231");
+		Professeur prof5= new Professeur("VR129787","Moutachaouik","Mohammed","Moutachaouik@email.com","0661328199");
+		Professeur prof6= new Professeur("UI187987","Alami","Mustapha","Alami@email.com","0611238973");
+		Professeur prof7= new Professeur("JU986212","Elkebch","Ali","Elkebch@email.com","0611312391");
+		Professeur prof8= new Professeur("CV978456","Laaraj","Ahmed","Laaraj@email.com","0616238231");
 
 		ob2.save(prof);
 		ob2.save(prof2);
