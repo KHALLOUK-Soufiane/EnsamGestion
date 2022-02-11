@@ -88,8 +88,6 @@ public class Emploi {
 				schedule.put(cours, shallowCreneau.get(counterr));	
 				shallowCreneau.remove(counterr); 
 			}
-			
-			
 		}
 		return schedule;
 		
