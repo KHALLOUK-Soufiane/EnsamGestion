@@ -8,24 +8,12 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Global Sales</h5>
-                <h4 class="card-title">Shipped Products</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
+                <h4 class="card-title">Nombre d'étudiants</h4>
+                
               </div>
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExample"></canvas>
-                </div>
+                  <center> <h6 class="card-title">${nbEtudiant}</h6> </center>
+
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -37,24 +25,12 @@
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">2018 Sales</h5>
-                <h4 class="card-title">All products</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
+                <h4 class="card-title">Nombre de professeurs</h4>
+                
               </div>
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                </div>
+                     <center>  <h6 class="card-title">${nbProf}<h6></center>
+
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -66,17 +42,15 @@
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Email Statistics</h5>
-                <h4 class="card-title">24 Hours Performance</h4>
+                <h4 class="card-title">Nombre de salles</h4>
               </div>
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                </div>
+                 <center><h6 class="card-title">${nbSalle}</h6></center>
+
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
                 </div>
               </div>
             </div>
@@ -86,8 +60,7 @@
           <div class="col-md-6">
             <div class="card  card-tasks">
               <div class="card-header ">
-                <h5 class="card-category">Backend development</h5>
-                <h4 class="card-title">Tasks</h4>
+                <h4 class="card-title">DEMANDES DE RESERVATIONS DE SALLES</h4>
               </div>
               <div class="card-body ">
                 <div class="table-full-width table-responsive">

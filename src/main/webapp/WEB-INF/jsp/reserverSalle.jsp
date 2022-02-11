@@ -10,14 +10,14 @@
               </div>
               <div class="card-body">
                 <form:form action="reserverSalle" method="post" modelAttribute="reservation">
-
+          
                   
                   <div class="row">
                     <div class="col pr-1">
                       <div class="form-group">
                         <form:label path="creneau">Creneau</form:label>
                         <form:select path="creneau" class="form-control" placeholder="Salle...">
-                        	<form:options items="${creneaux}" itemLabel="day" itemValue="id"></form:options>
+                        	<form:options items="${creneaux}" itemLabel="daytime" itemValue="id"></form:options>
                         </form:select>
                       </div>
                     </div>
@@ -27,7 +27,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="col pr-1">
                       <div class="form-group">
@@ -38,9 +37,8 @@
                       </div>
                     </div>                  
                   </div>
-
                   
-                  <button type="submit" class="btn btn-primary d-block btn-user w-100">Ajouter</button>
+                  <button type="submit" class="btn btn-primary d-block btn-user w-100">RESERVER</button>
                 </form:form>
               </div>
             </div>
