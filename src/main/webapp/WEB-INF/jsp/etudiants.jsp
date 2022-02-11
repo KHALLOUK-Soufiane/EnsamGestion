@@ -8,7 +8,10 @@
               <div class="card-header">
               <div class="row">
 	              <div class="col-8"><h4 class="card-title"> Liste des étudiants </h4></div>
+	              <c:if test="${user.appUserRole == 'ADMIN'}">
 	              <div class="col-4"><a  href="ajouterEtudiant" class="btn btn-info">Ajouter un étudiant</a></div>
+	              </c:if>
+             
               </div>
                 
               </div>
@@ -47,6 +50,7 @@
                         <td>
                           ${etu.niveau}
                         </td>
+                        <c:if test="${user.appUserRole == 'ADMIN'}">
                         <td>
                         <form action="/modifierEtudiant" method="get">
                     		<input type="hidden" value="${etu.id}" name="id">
@@ -58,6 +62,7 @@
                     	</form>
                     	
                     	</td>
+                    	</c:if>
                       </tr>
                       </c:forEach>
                     </tbody>

@@ -10,6 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import SpringProject.EnsamCasa.appuser.AppUser;
+import SpringProject.EnsamCasa.appuser.AppUserRepository;
+import SpringProject.EnsamCasa.appuser.AppUserRole;
 import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
@@ -39,6 +42,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired MatiereRepository ob5;
     @Autowired EmploiRepository ob6;
     @Autowired ClasseRepository ob7;
+    @Autowired AppUserRepository userrep;
 
 
 
@@ -70,7 +74,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
         Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
         ob7.save(api1);
 
-
+        AppUser user = new AppUser("loubna","elfaquih","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW", "Elfaquih@email.com",AppUserRole.PROFESSOR,false,true,"H223153");
+        userrep.save(user);
 		ArrayList<Matiere> cours = new ArrayList<Matiere>();
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
 		Emploi emp1 = new Emploi(1,iagi1);

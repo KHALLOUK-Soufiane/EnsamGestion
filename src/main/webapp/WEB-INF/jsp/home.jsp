@@ -49,8 +49,8 @@
           </li>
           </c:if>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Have an issue?
+            <a class="nav-link" href="/emplois">
+              GO TO APP
             </a>
           </li>
         </ul>
@@ -127,7 +127,12 @@
           </div>
           <c:if test="${user == null }">
           
-          <a href="" class="btn btn-primary btn-round btn-lg">LOGIN NOW</a>
+          <a href="/login" class="btn btn-primary btn-round btn-lg">LOGIN NOW</a>
+          </c:if>
+          
+          <c:if test="${user != null }">
+          
+          <a href="/emploi" class="btn btn-primary btn-round btn-lg">GO TO APP</a>
           </c:if>
         </div>
       </div>
