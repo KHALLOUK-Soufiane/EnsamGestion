@@ -68,35 +68,41 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Emploi emp1 = new Emploi(1,iagi1);
 		Emploi emp2 = new Emploi(1,iagi2);
 		
-		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "test@email.com", "1234567890");
-		Professeur prof2= new Professeur("H2233","Elfaquih","Loubna","Elfaquih@email.com","061231231");
+		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "zakrani@email.com", "1234567890");
+		Professeur prof2= new Professeur("H223153","Elfaquih","Loubna","Elfaquih@email.com","061231231");
+		Professeur prof3= new Professeur("FR874521","Chergui","Adil","Chergui@email.com","134568754");
+		Professeur prof4= new Professeur("VB125487","Hain","Mustapha","Hain@email.com","061231231");
 		ob2.save(prof);
 		ob2.save(prof2);
-		Matiere c1 = new Matiere("php",prof,iagi1);
+		ob2.save(prof3);
+		ob2.save(prof4);
+		Matiere c1 = new Matiere("php",prof3,iagi1);
 		Matiere c2 = new Matiere("html",prof,iagi1);
 		Matiere c3 = new Matiere("mongodb",prof,iagi2);
 		Matiere c4 = new Matiere("merise",prof2,iagi1);
 		Matiere c5 = new Matiere("Linux",prof,iagi1);
-		Matiere c6 = new Matiere("java",prof,iagi1);
-		Matiere c7 = new Matiere("oracle",prof,iagi2);
+		Matiere c6 = new Matiere("java",prof4,iagi1);
+		Matiere c7 = new Matiere("oracle",prof3,iagi2);
 		Matiere c8 = new Matiere("Machine Learning",prof,iagi2);
-		Matiere c9 = new Matiere("Analyse data",prof,iagi2);
-		Matiere c10 = new Matiere("sport",prof,iagi1);
-		Matiere c11 = new Matiere("securite",prof,iagi2);
+		Matiere c9 = new Matiere("Analyse data",prof2,iagi2);
+		Matiere c10 = new Matiere("sport",prof2,iagi1);
+		Matiere c11 = new Matiere("securite",prof3,iagi2);
 		Matiere c12 = new Matiere("python",prof2,iagi1);
 		Matiere c14 = new Matiere("Analyse 1",prof,api1);
 		Matiere c13 = new Matiere("Algebre 2",prof,api1);
 		Matiere c15 = new Matiere("Algebre 1",prof,api1);
-		Matiere c16 = new Matiere("Design pattern",prof,iagi2);
-		Matiere c17= new Matiere("Anglais",prof,iagi2);
-		Matiere c18 = new Matiere("espagnol",prof,iagi2);
-		Matiere c19 = new Matiere("Administration",prof,iagi2);
-		Matiere c20 = new Matiere("jee",prof,iagi2);
-		/*Matiere c21 = new Matiere("Algebre 1",prof,api1);
-		Matiere c22 = new Matiere("Design pattern",prof,iagi2);
-		Matiere c23= new Matiere("Anglais",prof,api1);
-		Matiere c24 = new Matiere("espagnol",prof,iagi2);
-		Matiere c25 = new Matiere("Administration",prof,iagi1);*/
+		Matiere c16 = new Matiere("Design pattern",prof4,iagi2);
+		Matiere c17= new Matiere("Anglais",prof4,iagi2);
+		Matiere c18 = new Matiere("espagnol",prof4,iagi2);
+		Matiere c19 = new Matiere("Administration Reseau",prof3,iagi2);
+		Matiere c20 = new Matiere("jee",prof2,iagi2);
+		Matiere c21 = new Matiere("Structures des donnees",prof4,iagi1);
+		Matiere c22 = new Matiere("Language C",prof,iagi1);
+		Matiere c23= new Matiere("francais",prof3,iagi2);
+		Matiere c24 = new Matiere("espagnol",prof2,iagi2);
+		Matiere c25 = new Matiere("Administration",prof3,iagi1);
+		Matiere c26 = new Matiere("UML",prof,iagi1);
+		Matiere c27 = new Matiere("SQL",prof,iagi1);
 	
 		
 		cours.add(c1);
@@ -119,6 +125,13 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c18);
 		cours.add(c19);
 		cours.add(c20);
+		cours.add(c21);
+		cours.add(c22);
+		cours.add(c23);
+		cours.add(c24);
+		cours.add(c25);
+		cours.add(c26);
+		cours.add(c27);
 		
 		ob5.saveAll(cours);
 		Creneau cr1 = new Creneau(800,1000,"Lundi");

@@ -98,10 +98,15 @@ public class WebController {
 			}
 	
 		model.addAttribute("user", user);
-		
-		
-		Integer niveau = Integer.parseInt(filiere.substring(filiere.length()-1));
-		filiere = filiere.substring(0, filiere.length()-1);
+		Integer niveau;
+		if(filiere != null) {
+			niveau = Integer.parseInt(filiere.substring(filiere.length()-1));
+			filiere = filiere.substring(0, filiere.length()-1);
+		}
+		else {
+			filiere = "";
+			niveau = 0;
+		}
 		
 		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi", filiere, niveau+2);
 		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi", filiere, niveau+2);
