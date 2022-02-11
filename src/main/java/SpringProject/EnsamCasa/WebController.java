@@ -68,6 +68,13 @@ public class WebController {
 		model.addAttribute("nbProf",nbProf);
 		Long nbSalle=salleRepository.count();
 		model.addAttribute("nbSalle",nbSalle);
+		
+		List<Reservation> reservations =  reservationRepository.findAll();
+		model.addAttribute("reservations", reservations);
+		
+		List<DemandeEmp> demandes =  demandeEmpRepository.findAll();
+		model.addAttribute("demandes", demandes);
+		
 		return "index";
 	}
 	
@@ -126,7 +133,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model, @RequestParam(required=false) String filiere) {
+	public String emplois(Model model, @RequestParam(required=false,defaultValue="IAGI1") String filiere) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser user = null;
 		if (principal instanceof AppUser) {
@@ -383,7 +390,7 @@ public class WebController {
 	@PostMapping("/modifierEmploi")
 	public String modifierEmploiPost(@ModelAttribute("demandeEmp") DemandeEmp demandeEmp) {
 		demandeEmpRepository.save(demandeEmp);
-		return "redirect:/";
+		return "redirect:modifierEmploi";
 	}
 	
 	@GetMapping("/modifierEmploi")

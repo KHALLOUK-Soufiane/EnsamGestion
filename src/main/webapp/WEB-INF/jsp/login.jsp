@@ -57,7 +57,7 @@
     </div>
   </nav>
   <!-- End Navbar -->
-   <header class="text-center text-white d-flex masthead page-header" style="background-image: url('assets/img/header.jpg');">
+   <header class="text-center text-white d-flex masthead page-header" style="background-image: url('assets/img/univ.jpg');background-size: cover;">
   
     <div class="container text-center">
       <div class="col-md-8 ml-auto mr-auto">

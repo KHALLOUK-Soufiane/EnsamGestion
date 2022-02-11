@@ -52,7 +52,7 @@
 			</c:if>
 
 
-           <c:if test="${user.appUserRole != 'STUDENT'}">
+           <c:if test="${user.appUserRole == 'STUDENT'}">
          
            <li>
             <a href="emplois">
@@ -88,16 +88,20 @@
           </li>
           
           </c:if>
-
-          
-
             <li>
             <a href="reserverSalle">
               <i class="now-ui-icons tech_mobile"></i>
               <p>Reserver des salles</p>
             </a>
           </li>
-          
+          <c:if test="${user.appUserRole == 'PROFESSOR'}">
+            <li>
+            <a href="modifierEmploi">
+              <i class="now-ui-icons tech_mobile"></i>
+              <p>Demande Modification Emploi</p>
+            </a>
+          </li>
+          </c:if>
         </ul>
       </div>
     </div>

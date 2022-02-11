@@ -122,17 +122,23 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c13 = new Matiere("Algebre 2",prof,api1);
 		Matiere c15 = new Matiere("Algebre 1",prof,api1);
 		Matiere c16 = new Matiere("Design pattern",prof4,iagi2);
-		Matiere c17= new Matiere("Anglais",prof4,iagi2);
+		Matiere c17 = new Matiere("Anglais",prof4,iagi2);
 		Matiere c18 = new Matiere("espagnol",prof4,iagi2);
 		Matiere c19 = new Matiere("Administration Reseau",prof3,iagi2);
 		Matiere c20 = new Matiere("jee",prof2,iagi2);
 		Matiere c21 = new Matiere("Structures des donnees",prof4,iagi1);
 		Matiere c22 = new Matiere("Language C",prof,iagi1);
-		Matiere c23= new Matiere("francais",prof3,iagi2);
+		Matiere c23 = new Matiere("francais",prof3,iagi2);
 		Matiere c24 = new Matiere("espagnol",prof2,iagi2);
 		Matiere c25 = new Matiere("Administration",prof3,iagi1);
 		Matiere c26 = new Matiere("UML",prof,iagi1);
 		Matiere c27 = new Matiere("SQL",prof,iagi1);
+		Matiere c28 = new Matiere("",prof4,iagi1);
+		Matiere c29 = new Matiere("",prof4,iagi1);
+		Matiere c30 = new Matiere("",prof4,iagi1);
+		Matiere c31 = new Matiere("",prof4,iagi1);
+		Matiere c32 = new Matiere("Communication",prof2,iagi1);
+		Matiere c33 = new Matiere("Administration",prof3,iagi1);
 		
 		System.out.println("teeeest="+c5.getProfesseur().getCIN());
 		
@@ -150,6 +156,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c12);
 		cours.add(c13);
 		cours.add(c14);
+		cours.add(c28);
+		cours.add(c29);
 		cours.add(c15);
 		cours.add(c16);
 		cours.add(c17);
@@ -161,8 +169,14 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c23);
 		cours.add(c24);
 		cours.add(c25);
+		cours.add(c30);
+
 		cours.add(c26);
 		cours.add(c27);
+
+		cours.add(c31);
+		cours.add(c32);
+		cours.add(c33);
 		
 		ob5.saveAll(cours);
 
