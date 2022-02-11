@@ -30,7 +30,7 @@
                         Email
                       </th>
                       <th>
-                      Telephone
+                      
                       </th>
                       <th></th>
                     </thead>
@@ -54,6 +54,8 @@
                     		<input type="hidden" value="${prof.id}" name="id">
                     		<input type="submit" class="btn btn-primary" value="Modifier">
                     	</form>
+                    	</td>
+                    	<td>
                     	<form action="/deleteProfesseur" method="post">
                     		<input type="hidden" value="${prof.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">

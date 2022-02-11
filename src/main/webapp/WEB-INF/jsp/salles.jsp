@@ -48,6 +48,8 @@
                     		<input type="hidden" value="${salle.id}" name="id">
                     		<input type="submit" class="btn btn-primary" value="Modifier">
                     	</form>
+                    	</td>
+                    	<td>
                     	<form action="/deleteSalle" method="post">
                     		<input type="hidden" value="${salle.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">

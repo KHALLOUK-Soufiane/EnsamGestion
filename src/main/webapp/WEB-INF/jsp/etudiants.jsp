@@ -56,6 +56,8 @@
                     		<input type="hidden" value="${etu.id}" name="id">
                     		<input type="submit" class="btn btn-primary" value="Modifier">
                     	</form>
+                    	</td>
+                    	<td>
                     	<form action="/deleteEtudiant" method="post">
                     		<input type="hidden" value="${etu.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">
