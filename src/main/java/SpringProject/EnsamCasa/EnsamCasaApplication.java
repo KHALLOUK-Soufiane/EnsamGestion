@@ -81,6 +81,11 @@ public class EnsamCasaApplication implements CommandLineRunner{
         ob3.save(s3);
         ob3.save(s4);
         ob3.save(s5);
+        ob3.save(s6);
+        ob3.save(s7);
+        ob3.save(s8);
+        ob3.save(s9);
+        ob3.save(s10);
         
         
         // ajout des classes
