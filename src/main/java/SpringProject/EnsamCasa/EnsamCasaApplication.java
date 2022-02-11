@@ -5,11 +5,17 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import SpringProject.EnsamCasa.appuser.AppUser;
+import SpringProject.EnsamCasa.appuser.AppUserRepository;
+import SpringProject.EnsamCasa.appuser.AppUserRole;
 import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
@@ -39,6 +45,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired MatiereRepository ob5;
     @Autowired EmploiRepository ob6;
     @Autowired ClasseRepository ob7;
+    @Autowired AppUserRepository ob8;
 
 
 
@@ -70,7 +77,22 @@ public class EnsamCasaApplication implements CommandLineRunner{
         Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
         ob7.save(api1);
 
-
+        //ajout des utilisateurs
+        AppUser pElfaquih = new AppUser("Loubna","Elfaquih","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Elfaquih@ensam-casa.ma",AppUserRole.PROFESSOR,false,true,"H223153");
+        AppUser pZekrani = new AppUser("Abdelali","Zekrani","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Zekrani@ensam-casa.ma",AppUserRole.PROFESSOR,false,true,"HE489751");
+        AppUser eYahya = new AppUser("Aloui","Yahya","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Aloui@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H1");
+        AppUser eAli = new AppUser("Makouar","Ali","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Makouar@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H2");
+        AppUser eSoufiane = new AppUser("Khallouk","Soufiane","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Khallouk@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H3");
+        AppUser aBessas = new AppUser("Bessas","Bouchra","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Bessas@ensam-casa.ma",AppUserRole.ADMIN,false,true,"H4");
+        ob8.save(pElfaquih);
+        ob8.save(pZekrani);
+        ob8.save(eYahya);
+        ob8.save(eAli);
+        ob8.save(eSoufiane);
+        ob8.save(aBessas);
+        
+        
+        
 		ArrayList<Matiere> cours = new ArrayList<Matiere>();
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
 		Emploi emp1 = new Emploi(1,iagi1);
