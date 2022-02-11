@@ -154,7 +154,6 @@
                 </c:if>
                 
                  <c:if test="${user.appUserRole == 'PROFESSOR' }" >
-
                 	<div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
@@ -181,7 +180,9 @@
                         <td style="color:red">
                           Lundi
                         </td>
-                        <c:forEach var="sea" items="${seancesL}">
+
+                        <c:forEach var="sea" items="${seancesLProf}">
+                        
                         <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
                         
 	                        <c:if test="${sea.creneau.startTime == 1400}">
@@ -202,9 +203,9 @@
                         <td style="color:red">
                           Mardi
                         </td>
-                        <c:forEach var="sea" items="${seancesM}">
+                        <c:forEach var="sea" items="${seancesMProf}">
                         <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
-                        
+                        <c:set var="sea1" value="${sea.matiere.name}"/>
 	                        <c:if test="${sea.creneau.startTime == 1400 }">
 	                        <td></td>
 	                        </c:if>
@@ -222,7 +223,7 @@
                         <td style="color:red">
                           Mercredi
                         </td>
-                        <c:forEach var="sea" items="${seancesMe}">
+                        <c:forEach var="sea" items="${seancesMeProf}">
                            <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
 
 	                        <c:if test="${sea.creneau.startTime == 1400 }">
@@ -240,7 +241,7 @@
                         <td style="color:red">
                           Jeudi
                         </td>
-                        <c:forEach var="sea" items="${seancesJ}">
+                        <c:forEach var="sea" items="${seancesJProf}">
                            <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
                         
 	                        <c:if test="${sea.creneau.startTime == 1400 }">
@@ -260,7 +261,7 @@
                         <td style="color:red">
                           Vendredi
                         </td>
-                        <c:forEach var="sea" items="${seancesV}">
+                        <c:forEach var="sea" items="${seancesVProf}">
                         <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
 	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>

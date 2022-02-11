@@ -103,7 +103,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c25 = new Matiere("Administration",prof3,iagi1);
 		Matiere c26 = new Matiere("UML",prof,iagi1);
 		Matiere c27 = new Matiere("SQL",prof,iagi1);
-	
+		
+		System.out.println("teeeest="+c5.getProfesseur().getCIN());
 		
 		cours.add(c1);
 		cours.add(c2);

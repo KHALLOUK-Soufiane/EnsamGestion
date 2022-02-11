@@ -2,6 +2,7 @@ package SpringProject.EnsamCasa.emploi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -71,10 +72,17 @@ public class Emploi {
 		ArrayList<Creneau> shallowCreneau = new ArrayList<Creneau>();
 		shallowCreneau = (ArrayList<Creneau>) creneaux.clone();
 		//Iterator iterCourses = courses.iterator();
-		//Iterator iterCreneaux = creneaux.iterator();
+		/*Iterator iterCreneaux = creneaux.iterator();
+		
+		//parse courses mornings and afternoons
+		while(iterCreneaux.hasNext()) {
+			
+		}*/
+		
 		int counterr=0;
 		for(Matiere cours: courses) {
 			//pick only courses in the required filiere 
+			
 			
 			if(classe.getFiliere() == cours.getClasse().getFiliere() && classe.getNiveau() == cours.getClasse().getNiveau()) {
 				schedule.put(cours, shallowCreneau.get(counterr));	

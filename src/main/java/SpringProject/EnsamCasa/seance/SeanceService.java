@@ -26,4 +26,9 @@ public class SeanceService {
 	public List<Seance> getSeancesDay(String day, String filiere, Integer niveau){
 		return seanceRepository.findSeanceByDay(day, filiere, niveau);
 	}
+	
+	public List<Seance> getSeancesDayProf(String day){
+		return seanceRepository.findSeanceByDayProf(day);
+	}
+	
 }
