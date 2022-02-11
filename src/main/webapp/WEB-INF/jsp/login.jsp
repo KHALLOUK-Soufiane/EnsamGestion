@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              Have an issue?
+              Contact
             </a>
           </li>
         </ul>
@@ -65,7 +65,7 @@
           <h1 class="title">
             ENSAM GESTION
           </h1>
-          <h3 class="description">LOGIN</h3>
+          <h3 class="description">Se Connecter</h3>
           
           
         </div>

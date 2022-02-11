@@ -5,12 +5,12 @@
           
           <li>
             <a href="">
-              About Us
+              A Propos
             </a>
           </li>
           <li>
             <a href="">
-              Contact Us
+              Nous Contacter
             </a>
           </li>
         </ul>
@@ -19,7 +19,7 @@
         &copy; <script>
           document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
         </script> 
-        <a href="" target="_blank">ENSAM GESTION</a>. Coded by <a href="" target="_blank">MAKOUAR Ali, KHALLOUK Soufiane, ALOUI Yahya</a>.
+        <a href="" target="_blank">ENSAM GESTION</a>. Realise par <a href="" target="_blank">MAKOUAR Ali, KHALLOUK Soufiane, ALOUI Yahya</a>.
       </div>
     </div>
   </footer>

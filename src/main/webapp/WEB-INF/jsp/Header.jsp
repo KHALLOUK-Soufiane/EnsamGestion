@@ -46,7 +46,7 @@
             
               <i class="now-ui-icons design_app"></i>
               
-              <p>Home</p>
+              <p>Dashboard</p>
             </a>
           </li>
 			</c:if>
@@ -59,7 +59,6 @@
               <p>Liste des emplois</p>
             </a>
           </li>
-          
           
           <c:if test="${user.appUserRole != 'STUDENT'}">
           
@@ -139,7 +138,7 @@
                   <i class="now-ui-icons users_single-02"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">${user.firstName} ${user.lastName}</a>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </li>
