@@ -42,7 +42,7 @@
            <c:if test="${user.appUserRole == 'ADMIN'}">
         
           <li>
-            <a href="home">
+            <a href="/dashboard">
             
               <i class="now-ui-icons design_app"></i>
               

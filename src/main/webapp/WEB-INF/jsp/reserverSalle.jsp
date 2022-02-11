@@ -40,7 +40,7 @@
                   </div>
 
                   
-                  <button type="submit" class="btn btn-primary d-block btn-user w-100">Ajouter</button>
+                  <button type="submit" class="btn btn-primary d-block btn-user w-100">RESERVER</button>
                 </form:form>
               </div>
             </div>

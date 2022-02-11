@@ -48,6 +48,24 @@ public class WebController {
 	@Autowired ProfesseurService professeurService;
 
 	
+	@GetMapping("/dashboard")
+	public String dashboard(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		model.addAttribute("user", user);
+		Long nbEtudiant=etudiantRepository.count();
+		model.addAttribute("nbEtudiant",nbEtudiant);
+		Long nbProf=professeurRepository.count();
+		model.addAttribute("nbProf",nbProf);
+		Long nbSalle=salleRepository.count();
+		model.addAttribute("nbSalle",nbSalle);
+		return "index";
+	}
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -336,7 +354,7 @@ public class WebController {
 	@PostMapping("/reserverSalle")
 	public String reserverSallePost(@ModelAttribute("reservation") Reservation reservation, Model model) {
 		reservationRepository.save(reservation);
-		return "redirect:/";
+		return "redirect:/reserverSalle";
 	}
 	
 
