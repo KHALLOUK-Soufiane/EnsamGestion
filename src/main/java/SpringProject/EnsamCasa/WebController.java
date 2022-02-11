@@ -1,5 +1,6 @@
 package SpringProject.EnsamCasa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import SpringProject.EnsamCasa.appuser.AppUser;
+import SpringProject.EnsamCasa.creneau.Creneau;
+import SpringProject.EnsamCasa.creneau.CreneauRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
 import SpringProject.EnsamCasa.etudiant.EtudiantController;
 import SpringProject.EnsamCasa.etudiant.EtudiantRepository;
@@ -17,6 +20,8 @@ import SpringProject.EnsamCasa.professeur.Professeur;
 import SpringProject.EnsamCasa.professeur.ProfesseurController;
 import SpringProject.EnsamCasa.professeur.ProfesseurRepository;
 import SpringProject.EnsamCasa.professeur.ProfesseurService;
+import SpringProject.EnsamCasa.reservation.Reservation;
+import SpringProject.EnsamCasa.reservation.ReservationRepository;
 import SpringProject.EnsamCasa.salle.Salle;
 import SpringProject.EnsamCasa.salle.SalleController;
 import SpringProject.EnsamCasa.salle.SalleRepository;
@@ -36,6 +41,8 @@ public class WebController {
 	@Autowired EtudiantRepository etudiantRepository;
 	@Autowired ProfesseurRepository professeurRepository;
 	@Autowired SalleRepository salleRepository;
+	@Autowired CreneauRepository creneauRepository;
+	@Autowired ReservationRepository reservationRepository;
 	@Autowired SalleService salleService;
 	@Autowired SeanceService seanceService;
 	@Autowired ProfesseurService professeurService;
@@ -285,5 +292,32 @@ public class WebController {
 		salleService.updateSalle(salle.getId(), salle);
 		return "redirect:salles";
 	}
+	
+	@GetMapping("/reserverSalle")
+	public String reserverSalle(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		
+		Reservation reservation = new Reservation();
+		model.addAttribute("reservation", reservation);
+		
+		List<Salle> salles = salleRepository.findAll();
+		List<Creneau> creneaux = creneauRepository.findAll();
+		model.addAttribute("salles", salles);
+		model.addAttribute("creneaux", creneaux);
+		
+		return "reserverSalle";
+	}
+	
+	@PostMapping("/reserverSalle")
+	public String reserverSallePost(@ModelAttribute("reservation") Reservation reservation, Model model) {
+		reservationRepository.save(reservation);
+		return "redirect:/";
+	}
+	
 
 }

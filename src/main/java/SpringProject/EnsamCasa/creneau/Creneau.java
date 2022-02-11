@@ -58,6 +58,15 @@ public class Creneau {
 		public void setDay(String day) {
 			this.day = day;
 		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+		
 	}
 
 
