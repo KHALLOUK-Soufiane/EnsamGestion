@@ -30,7 +30,7 @@
                         Email
                       </th>
                       <th>
-                      
+                      Action
                       </th>
                       <th></th>
                     </thead>
