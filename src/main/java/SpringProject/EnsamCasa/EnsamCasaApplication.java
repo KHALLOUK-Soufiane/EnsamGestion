@@ -165,6 +165,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c27);
 		
 		ob5.saveAll(cours);
+
 		Creneau cr1 = new Creneau(800,1000,"Lundi","Lundi à 8h");
 		Creneau cr2 = new Creneau(1015,1215,"Lundi","Lundi à 10h15");
 		
@@ -172,6 +173,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Creneau cr5 = new Creneau(1615,1815,"Lundi","Lundi à 16h15");
 		Creneau cr6 = new Creneau(800,1000,"Mardi","Mardi à 8h");
 		Creneau cr7 = new Creneau(1015,1215,"Mardi","Mardi à 10h15");
+
 	
 		Creneau cr9 = new Creneau(1400,1600,"Mardi","Mardi à 14h");
 		Creneau cr10 = new Creneau(1615,1815,"Mardi","Mardi à 16h15");
