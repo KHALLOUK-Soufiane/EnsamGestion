@@ -53,7 +53,15 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Etudiant student = new Etudiant("1562032", "2eme annee", "stuNom", "stuPrenom", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
         ob.save(student);
         Salle s = new Salle("Salle 1",30,1);
+        Salle s2 = new Salle("Salle 2",30,1);
+        Salle s3 = new Salle("Salle 3",30,1);
+        Salle s4 = new Salle("Salle 4",30,1);
+        Salle s5 = new Salle("Salle 5",30,1);
         ob3.save(s);
+        ob3.save(s2);
+        ob3.save(s3);
+        ob3.save(s4);
+        ob3.save(s5);
         Classe iagi1 = new Classe(3,"1ere annee IAGI","IAGI");
         ob7.save(iagi1);
         Classe iagi2 = new Classe(4,"2eme annee IAGI","IAGI");
@@ -103,7 +111,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		Matiere c25 = new Matiere("Administration",prof3,iagi1);
 		Matiere c26 = new Matiere("UML",prof,iagi1);
 		Matiere c27 = new Matiere("SQL",prof,iagi1);
-	
+		
+		System.out.println("teeeest="+c5.getProfesseur().getCIN());
 		
 		cours.add(c1);
 		cours.add(c2);

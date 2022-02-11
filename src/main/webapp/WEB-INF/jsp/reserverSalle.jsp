@@ -10,16 +10,7 @@
               </div>
               <div class="card-body">
                 <form:form action="reserverSalle" method="post" modelAttribute="reservation">
-                  <div class="row">
-                    <div class="col pr-1">
-                      <div class="form-group">
-                        <form:label path="salle">Salle</form:label>
-                        <form:select path="salle" class="form-control" placeholder="Salle...">
-                        	<form:options items="${salles}" itemLabel="libelle" itemValue="id"></form:options>
-                        </form:select>
-                      </div>
-                    </div>                  
-                  </div>
+
                   
                   <div class="row">
                     <div class="col pr-1">
@@ -36,6 +27,18 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col pr-1">
+                      <div class="form-group">
+                        <form:label path="salle">Salle</form:label>
+                        <form:select path="salle" class="form-control" placeholder="Salle...">
+                        	<form:options items="${salles}" itemLabel="libelle" itemValue="id"></form:options>
+                        </form:select>
+                      </div>
+                    </div>                  
+                  </div>
+
                   
                   <button type="submit" class="btn btn-primary d-block btn-user w-100">Ajouter</button>
                 </form:form>

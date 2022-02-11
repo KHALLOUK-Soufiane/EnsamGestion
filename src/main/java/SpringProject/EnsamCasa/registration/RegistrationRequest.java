@@ -10,14 +10,16 @@ public class RegistrationRequest {
 	private final String lastName;
 	private final String password;
 	private final String email;
+	private final String CIN;
 	private final AppUserRole appUserRole;
 	
-	public RegistrationRequest(String firstName, String lastName, String password, String email, AppUserRole appUserRole) {
+	public RegistrationRequest(String firstName, String lastName, String password, String email, AppUserRole appUserRole, String CIN) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		this.email = email;
+		this.CIN = CIN; 
 		this.appUserRole = appUserRole;
 	}
 
@@ -37,6 +39,10 @@ public class RegistrationRequest {
 		return email;
 	}	
 	
+	public String getCIN() {
+		return CIN;
+	}
+
 	public AppUserRole getAppUserRole() {
 		return appUserRole;
 	}
