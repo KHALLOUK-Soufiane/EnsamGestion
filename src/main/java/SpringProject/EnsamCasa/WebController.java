@@ -133,7 +133,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model, @RequestParam(required=false) String filiere) {
+	public String emplois(Model model, @RequestParam(required=false,defaultValue="IAGI1") String filiere) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser user = null;
 		if (principal instanceof AppUser) {
