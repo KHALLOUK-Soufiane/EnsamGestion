@@ -90,14 +90,13 @@
           </c:if>
 
           
-          <c:if test="${user.appUserRole == 'STUDENT'}">
-                                         <li>
-            <a href="Ressalles">
+
+            <li>
+            <a href="reserverSalle">
               <i class="now-ui-icons tech_mobile"></i>
-              <p>reserver des salles</p>
+              <p>Reserver des salles</p>
             </a>
           </li>
-          </c:if>
           
         </ul>
       </div>
