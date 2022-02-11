@@ -52,7 +52,6 @@
 			</c:if>
 
 
-           <c:if test="${user.appUserRole == 'STUDENT'}">
          
            <li>
             <a href="emplois">
@@ -61,7 +60,6 @@
             </a>
           </li>
           
-          </c:if>
           
           <c:if test="${user.appUserRole != 'STUDENT'}">
           
