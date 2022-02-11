@@ -120,6 +120,9 @@
                       <th>
                         Creneau
                       </th>
+                      <th>
+                      	
+                      </th>
                     </thead>
                     <tbody>
                     <c:forEach var="dem" items="${demandes}">
@@ -133,6 +136,9 @@
                         <td>
                         	${dem.creneau.daytime}
                         </td>
+                        <td>
+                        	<button id="confirmer" class="btn btn-danger" onclick="alert('l\'emploi a ete modifier');">Confirmer</button>
+                        </td>
                    	</tr>
                     </c:forEach>
                     </tbody>
@@ -143,4 +149,7 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+
+</script>
  <jsp:include page="footer.jsp"></jsp:include>
