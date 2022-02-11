@@ -58,7 +58,7 @@
     </div>
   </nav>
   <div class="page-header clear-filter" filter-color="orange">
-    <div class="page-header-image" style="background-image: url('assets/img/header.jpg');"></div>
+    <div class="page-header-image" style="background-image: url('assets/img/school.jpg');"></div>
     <div class="container text-center">
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand">
