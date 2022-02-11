@@ -34,7 +34,7 @@
           EG
         </a>
         <a href="/" class="simple-text logo-normal">
-          ENSAM GESTION
+          <img style="width:100%" src="assets/img/logoapp.png">
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -151,6 +151,9 @@
         </div>
       </nav>
       <!-- End Navbar -->
+                 
+      
             <div class="panel-header panel-sm">
+             <img src="assets/img/waves.png" style="width:100%;height:150px">
       </div>
     
