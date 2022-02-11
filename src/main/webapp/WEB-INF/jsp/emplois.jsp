@@ -11,6 +11,11 @@
               <c:if test="${user.appUserRole == 'ADMIN' }">
               <div class="col-4"><button type="submit" form="filiereForm" class="btn btn-info">Generer un emplois</button></div>
                </c:if>
+               
+               <c:if test="${user.appUserRole == 'STUDENT' }">
+              <div class="col-4"><button type="submit" form="filiereForm" class="btn btn-info">Voir emploi</button></div>
+               </c:if>
+               
               </div>
               
               <c:if test="${user.appUserRole != 'PROFESSOR' }"> 
