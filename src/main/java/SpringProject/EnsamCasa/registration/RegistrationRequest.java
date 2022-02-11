@@ -1,5 +1,6 @@
 package SpringProject.EnsamCasa.registration;
 
+import SpringProject.EnsamCasa.appuser.AppUserRole;
 import lombok.*;
 
 @EqualsAndHashCode
@@ -9,13 +10,15 @@ public class RegistrationRequest {
 	private final String lastName;
 	private final String password;
 	private final String email;
+	private final AppUserRole appUserRole;
 	
-	public RegistrationRequest(String firstName, String lastName, String password, String email) {
+	public RegistrationRequest(String firstName, String lastName, String password, String email, AppUserRole appUserRole) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		this.email = email;
+		this.appUserRole = appUserRole;
 	}
 
 	public String getFirstName() {
@@ -34,5 +37,8 @@ public class RegistrationRequest {
 		return email;
 	}	
 	
+	public AppUserRole getAppUserRole() {
+		return appUserRole;
+	}
 	
 }
