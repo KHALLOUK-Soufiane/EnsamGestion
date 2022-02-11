@@ -17,7 +17,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -29,12 +29,12 @@
                 
               </div>
               <div class="card-body">
-                     <center>  <h6 class="card-title">${nbProf}<h6></center>
+                     <center><h6 class="card-title">${nbProf}<h6></center>
 
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>

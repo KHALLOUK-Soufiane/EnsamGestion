@@ -20,6 +20,8 @@ import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.creneau.CreneauRepository;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmp;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmpRepository;
 import SpringProject.EnsamCasa.emploi.Emploi;
 import SpringProject.EnsamCasa.emploi.EmploiRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
@@ -46,6 +48,7 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired EmploiRepository ob6;
     @Autowired ClasseRepository ob7;
     @Autowired AppUserRepository ob8;
+    @Autowired DemandeEmpRepository ob9;
 
 
 
@@ -57,8 +60,12 @@ public class EnsamCasaApplication implements CommandLineRunner{
 	@Override
     public void run(String... args) throws Exception
     {
-		Etudiant student = new Etudiant("1562032", "2eme annee", "stuNom", "stuPrenom", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student = new Etudiant("1562032", "2eme annee", "KHALLOUK", "Soufiane", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student2 = new Etudiant("5132104", "2eme annee", "ALOUI", "Yahya", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student3 = new Etudiant("9785462", "2eme annee", "MAKOUAR", "Ali", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
         ob.save(student);
+        ob.save(student2);
+        ob.save(student3);
         Salle s = new Salle("Salle 1",30,1);
         Salle s2 = new Salle("Salle 2",30,1);
         Salle s3 = new Salle("Salle 3",30,1);
@@ -73,7 +80,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
         ob7.save(iagi1);
         Classe iagi2 = new Classe(4,"2eme annee IAGI","IAGI");
         ob7.save(iagi2);
-
+        
+        
         Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
         ob7.save(api1);
 
@@ -242,8 +250,13 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		
 		genererSeance(schedule, emp1, cours, creneau);
 		genererSeance(schedule2, emp2, cours, creneau);
-		
-		
+//		
+//		DemandeEmp demp = new DemandeEmp(c5, cr10, pElfaquih);
+//		DemandeEmp demp2 = new DemandeEmp(c3, cr15, pElfaquih);
+//		DemandeEmp demp3 = new DemandeEmp(c12, cr9, pElfaquih);
+//		ob9.save(demp);
+//		ob9.save(demp2);
+//		ob9.save(demp3);
 //        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
 //        ob2.save(y);
 //        Seance address = new Seance(8, 10, "Mardi", student, s, y);

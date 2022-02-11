@@ -44,13 +44,13 @@
         <c:if test="${user == null }">
           <li class="nav-item">
             <a class="nav-link" href="login.jsp">
-               Login
+               Se Connecter
             </a>
           </li>
           </c:if>
           <li class="nav-item">
             <a class="nav-link" href="/emplois">
-              GO TO APP
+              Acceder a l'application
             </a>
           </li>
         </ul>
@@ -83,7 +83,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -100,7 +100,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -118,22 +118,14 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
           </div>   
                  
           </div>
-          <c:if test="${user == null }">
-          
-          <a href="/login" class="btn btn-primary btn-round btn-lg">LOGIN NOW</a>
-          </c:if>
-          
-          <c:if test="${user != null }">
-          
-          <a href="/emploi" class="btn btn-primary btn-round btn-lg">GO TO APP</a>
-          </c:if>
+          <a href="/emploi" class="btn btn-primary btn-round btn-lg">ENSAM Gestion</a>
         </div>
       </div>
     </div>
