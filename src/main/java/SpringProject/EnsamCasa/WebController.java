@@ -333,5 +333,24 @@ public class WebController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/modifierEmploi")
+	public String modifierSalle(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		
+		Reservation reservation = new Reservation();
+		model.addAttribute("reservation", reservation);
+		
+		List<Salle> salles = salleRepository.findAll();
+		List<Creneau> creneaux = creneauRepository.findAll();
+		model.addAttribute("salles", salles);
+		model.addAttribute("creneaux", creneaux);
+		
+		return "modifierEmploi";
+	}
 
 }

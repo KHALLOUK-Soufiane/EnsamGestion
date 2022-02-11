@@ -150,7 +150,7 @@
                 
                 
                 <c:if test="${user.appUserRole == 'ADMIN' }" >
-                      <div class="text-center"><button class="btn btn-primary">Modifier</button></div> 
+                      <div class="text-center"><button onclick="window.location.href = '/modifierEmploi';" class="btn btn-primary">Modifier</button></div> 
                 </c:if>
                 
                  <c:if test="${user.appUserRole == 'PROFESSOR' }" >
