@@ -224,7 +224,7 @@
                         <c:forEach var="sea" items="${seancesMeProf}">
                            <c:if test="${ sea.professeur.getCIN() == user.getCIN()}">
 
-	                        <c:if test="${sea.creneau.startTime == 1400 }">
+	                        <c:if test="${sea.creneau.startTime == 1400}">
 	                        <td></td>
 	                        </c:if>
 	                        <td>
