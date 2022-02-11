@@ -24,15 +24,17 @@ public class Creneau {
 		private int startTime;
 		private int endTime;
 		private String day;
+		private String daytime;
 		
 		public Creneau() {
 			
 		}
 		
-		public Creneau(int startTime,int endTime,String day) {
+		public Creneau(int startTime,int endTime,String day,String daytime) {
 			this.setStartTime(startTime);
 			this.setEndTime(endTime);
 			this.setDay(day);
+			this.setDaytime(daytime);
 		}
 
 		public int getStartTime() {
@@ -65,6 +67,14 @@ public class Creneau {
 
 		public void setId(Long id) {
 			this.id = id;
+		}
+
+		public String getDaytime() {
+			return daytime;
+		}
+
+		public void setDaytime(String daytime) {
+			this.daytime = daytime;
 		}
 		
 	}

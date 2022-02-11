@@ -76,7 +76,7 @@
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
                 <h5 class="card-category">Combien d'etudiants ?</h5>
-                <h4 class="card-title" style="color:red">1202</h4>
+                <h4 class="card-title" style="color:red">${nbEtudiant}</h4>
               </div>
               <div class="card-body">
                       <span class="now-ui-icons users_single-02"></span>
@@ -92,8 +92,8 @@
           <div class="col-lg-4">
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
-                <h5 class="card-category">Combien de filières ?</h5>
-                <h4 class="card-title" style="color:red">5</h4>
+                <h5 class="card-category">Combien de professeurs ?</h5>
+                <h4 class="card-title" style="color:red">${nbProf}</h4>
               </div>
               <div class="card-body">
                       <span class="now-ui-icons files_single-copy-04"></span>
@@ -110,7 +110,7 @@
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
                 <h5 class="card-category">Combien de salles ?</h5>
-                <h4 class="card-title" style="color:red">76</h4>
+                <h4 class="card-title" style="color:red">${nbSalle}</h4>
               </div>
               <div class="card-body">
                                     <span class="now-ui-icons design-2_ruler-pencil"></span>

@@ -165,31 +165,31 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c27);
 		
 		ob5.saveAll(cours);
-		Creneau cr1 = new Creneau(800,1000,"Lundi à 8h");
-		Creneau cr2 = new Creneau(1015,1215,"Lundi à 10h15");
+		Creneau cr1 = new Creneau(800,1000,"Lundi","Lundi à 8h");
+		Creneau cr2 = new Creneau(1015,1215,"Lundi","Lundi à 10h15");
 		
-		Creneau cr4 = new Creneau(1400,1600,"Lundi à 14h");
-		Creneau cr5 = new Creneau(1615,1815,"Lundi à 16h15");
-		Creneau cr6 = new Creneau(800,1000,"Mardi");
-		Creneau cr7 = new Creneau(1015,1215,"Mardi");
+		Creneau cr4 = new Creneau(1400,1600,"Lundi","Lundi à 14h");
+		Creneau cr5 = new Creneau(1615,1815,"Lundi","Lundi à 16h15");
+		Creneau cr6 = new Creneau(800,1000,"Mardi","Mardi à 8h");
+		Creneau cr7 = new Creneau(1015,1215,"Mardi","Mardi à 10h15");
 	
-		Creneau cr9 = new Creneau(1400,1600,"Mardi");
-		Creneau cr10 = new Creneau(1615,1815,"Mardi");
-		Creneau cr11 = new Creneau(800,1000,"Mercredi");
-		Creneau cr12 = new Creneau(1015,1215,"Mercredi");
+		Creneau cr9 = new Creneau(1400,1600,"Mardi","Mardi à 14h");
+		Creneau cr10 = new Creneau(1615,1815,"Mardi","Mardi à 16h15");
+		Creneau cr11 = new Creneau(800,1000,"Mercredi","Mercredi à 8h");
+		Creneau cr12 = new Creneau(1015,1215,"Mercredi","Mercredi à 10h15");
 		
-		Creneau cr14 = new Creneau(1400,1600,"Mercredi");
-		Creneau cr15 = new Creneau(1615,1815,"Mercredi");
-		Creneau cr16 = new Creneau(800,1000,"Jeudi");
-		Creneau cr17 = new Creneau(1015,1215,"Jeudi");
+		Creneau cr14 = new Creneau(1400,1600,"Mercredi","Mercredi à 14h");
+		Creneau cr15 = new Creneau(1615,1815,"Mercredi","Mercredi à 16h15");
+		Creneau cr16 = new Creneau(800,1000,"Jeudi","Jeudi à 8h");
+		Creneau cr17 = new Creneau(1015,1215,"Jeudi","Jeudi à 10h15");
 	
-		Creneau cr19 = new Creneau(1400,1600,"Jeudi");
-		Creneau cr20 = new Creneau(1615,1815,"Jeudi");
-		Creneau cr21 = new Creneau(800,1000,"Vendredi");
-		Creneau cr22 = new Creneau(1015,1215,"Vendredi");
+		Creneau cr19 = new Creneau(1400,1600,"Jeudi","Jeudi à 14h");
+		Creneau cr20 = new Creneau(1615,1815,"Jeudi","Jeudi à 16h15");
+		Creneau cr21 = new Creneau(800,1000,"Vendredi","Vendredi à 8h");
+		Creneau cr22 = new Creneau(1015,1215,"Vendredi","Vendredi à 10h15");
 		
-		Creneau cr24 = new Creneau(1400,1600,"Vendredi");
-		Creneau cr25 = new Creneau(1615,1815,"Vendredi");
+		Creneau cr24 = new Creneau(1400,1600,"Vendredi","Vendredi à 14h");
+		Creneau cr25 = new Creneau(1615,1815,"Vendredi","Vendredi à 16h15");
 		
 		
 		creneau.add(cr1);

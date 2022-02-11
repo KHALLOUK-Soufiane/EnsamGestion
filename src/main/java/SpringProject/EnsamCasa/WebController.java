@@ -56,7 +56,7 @@ public class WebController {
 			user = (AppUser)principal;
 			}
 		model.addAttribute("user", user);
-		return "home";
+		return "redirect:home";
 	}
 	
 	@GetMapping("/home")
@@ -67,6 +67,12 @@ public class WebController {
 			user = (AppUser)principal;
 			}
 		model.addAttribute("user", user);
+		Long nbEtudiant=etudiantRepository.count();
+		model.addAttribute("nbEtudiant",nbEtudiant);
+		Long nbProf=professeurRepository.count();
+		model.addAttribute("nbProf",nbProf);
+		Long nbSalle=salleRepository.count();
+		model.addAttribute("nbSalle",nbSalle);
 		return "home";
 	}
 	

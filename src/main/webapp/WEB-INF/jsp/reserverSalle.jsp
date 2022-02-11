@@ -17,7 +17,7 @@
                       <div class="form-group">
                         <form:label path="creneau">Creneau</form:label>
                         <form:select path="creneau" class="form-control" placeholder="Salle...">
-                        	<form:options items="${creneaux}" itemLabel="day" itemValue="id"></form:options>
+                        	<form:options items="${creneaux}" itemLabel="daytime" itemValue="id"></form:options>
                         </form:select>
                       </div>
                     </div>
