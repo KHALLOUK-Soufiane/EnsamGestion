@@ -32,7 +32,7 @@ public class SeanceController {
 		return seanceService.getSeancesDay(day, filiere, niveau);
 	}
 	
-	public List<Seance> getSeancesByDayProf(String day){
-		return seanceService.getSeancesDayProf(day);
+	public List<Seance> getSeancesByDayProf(String day, String cin){
+		return seanceService.getSeancesDayProf(day, cin);
 	}
 }

@@ -32,7 +32,8 @@ public class RegistrationService {
 				request.getEmail(),
 				request.getAppUserRole(),
 				false,
-				true
+				true,
+				request.getCIN()
 				));
 	}
 }

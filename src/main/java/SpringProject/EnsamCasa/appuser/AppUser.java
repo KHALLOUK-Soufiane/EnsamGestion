@@ -46,7 +46,7 @@ public class AppUser implements UserDetails{
 	}
 	
 	public AppUser(String firstName, String lastName, String password, String email, AppUserRole appUserRole, Boolean locked,
-			Boolean enabled) {
+			Boolean enabled, String CIN) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -55,6 +55,7 @@ public class AppUser implements UserDetails{
 		this.appUserRole = appUserRole;
 		this.locked = locked;
 		this.enabled = enabled;
+		this.CIN = CIN;
 	}
 
 	@Override

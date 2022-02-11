@@ -116,11 +116,11 @@ public class WebController {
 		
 		
 		//seances afin d'avoir l'emploi de chaque prof
-		List<Seance> seancesLProf = seanceController.getSeancesByDayProf("Lundi");
-		List<Seance> seancesMProf = seanceController.getSeancesByDayProf("Mardi");
-		List<Seance> seancesMeProf = seanceController.getSeancesByDayProf("Mercredi");
-		List<Seance> seancesJProf = seanceController.getSeancesByDayProf("Jeudi");
-		List<Seance> seancesVProf = seanceController.getSeancesByDayProf("Vendredi");
+		List<Seance> seancesLProf = seanceController.getSeancesByDayProf("Lundi", user.getCIN());
+		List<Seance> seancesMProf = seanceController.getSeancesByDayProf("Mardi", user.getCIN());
+		List<Seance> seancesMeProf = seanceController.getSeancesByDayProf("Mercredi", user.getCIN());
+		List<Seance> seancesJProf = seanceController.getSeancesByDayProf("Jeudi", user.getCIN());
+		List<Seance> seancesVProf = seanceController.getSeancesByDayProf("Vendredi", user.getCIN());
 		model.addAttribute("seancesLProf", seancesLProf);
 		model.addAttribute("seancesMProf", seancesMProf);
 		model.addAttribute("seancesMeProf", seancesMeProf);
@@ -128,7 +128,6 @@ public class WebController {
 		model.addAttribute("seancesVProf", seancesVProf);
 		
 		//fin seance emploi prof
-		
 		model.addAttribute("filiere", filiere);
 		if(filiere != null) {
 			model.addAttribute("seancesL", seancesL);

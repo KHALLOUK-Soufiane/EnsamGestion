@@ -189,9 +189,7 @@
 	                        <td></td>
 	                        </c:if>
 	                        <td>
-	                        
-	                        
-	                          ${sea.matiere.name}
+	                        	${sea.matiere.name}
 	                        </td>
 	                        </c:if>
 	                        <td></td>
