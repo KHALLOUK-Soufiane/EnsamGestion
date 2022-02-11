@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import SpringProject.EnsamCasa.appuser.AppUser;
 import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.creneau.CreneauRepository;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmp;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmpRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
 import SpringProject.EnsamCasa.etudiant.EtudiantController;
 import SpringProject.EnsamCasa.etudiant.EtudiantRepository;
@@ -28,6 +30,7 @@ import SpringProject.EnsamCasa.salle.SalleRepository;
 import SpringProject.EnsamCasa.salle.SalleService;
 import SpringProject.EnsamCasa.seance.Seance;
 import SpringProject.EnsamCasa.seance.SeanceController;
+import SpringProject.EnsamCasa.seance.SeanceRepository;
 import SpringProject.EnsamCasa.seance.SeanceService;
 
 @Controller
@@ -43,6 +46,8 @@ public class WebController {
 	@Autowired SalleRepository salleRepository;
 	@Autowired CreneauRepository creneauRepository;
 	@Autowired ReservationRepository reservationRepository;
+	@Autowired SeanceRepository seanceRepository;
+	@Autowired DemandeEmpRepository demandeEmpRepository;
 	@Autowired SalleService salleService;
 	@Autowired SeanceService seanceService;
 	@Autowired ProfesseurService professeurService;
@@ -336,6 +341,30 @@ public class WebController {
 	@PostMapping("/reserverSalle")
 	public String reserverSallePost(@ModelAttribute("reservation") Reservation reservation, Model model) {
 		reservationRepository.save(reservation);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/modifierEmploi")
+	public String modifierEmploi(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+		}
+		model.addAttribute("user", user);
+		
+		DemandeEmp demandeEmp = new DemandeEmp();
+		model.addAttribute("demandeEmp", demandeEmp);
+		
+		List<Seance> seances = seanceRepository.findAll();
+		model.addAttribute("sea", seances);
+		
+		return "modifierEmploi";
+	}
+	
+	@PostMapping("/modifierEmploi")
+	public String modifierEmploiPost(@ModelAttribute("demandeEmp") DemandeEmp demandeEmp) {
+		demandeEmpRepository.save(demandeEmp);
 		return "redirect:/";
 	}
 	
