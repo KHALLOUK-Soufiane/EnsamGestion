@@ -38,7 +38,7 @@
                     </div>
                   </div>
 
-          
+          		<form:input path="appuser" type="hidden" value="${user.id}"/>
                   
                   <button type="submit" class="btn btn-primary d-block btn-user w-100">Ajouter</button>
                 </form:form>

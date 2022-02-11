@@ -68,6 +68,13 @@ public class WebController {
 		model.addAttribute("nbProf",nbProf);
 		Long nbSalle=salleRepository.count();
 		model.addAttribute("nbSalle",nbSalle);
+		
+		List<Reservation> reservations =  reservationRepository.findAll();
+		model.addAttribute("reservations", reservations);
+		
+		List<DemandeEmp> demandes =  demandeEmpRepository.findAll();
+		model.addAttribute("demandes", demandes);
+		
 		return "index";
 	}
 	

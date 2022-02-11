@@ -34,6 +34,9 @@ public class DemandeEmp {
 	@JoinColumn(name = "idCreneau")
 	private Creneau creneau;
 	@ManyToOne
+	@JoinColumn(name = "idUser")
+	private AppUser appuser;
+	@ManyToOne
 	@JoinColumn(name = "idMatiere")
 	private Matiere matiere;
 	
@@ -41,17 +44,19 @@ public class DemandeEmp {
 		super();
 	}
 	
-	public DemandeEmp(Long id, Matiere matiere, Creneau creneau) {
+	public DemandeEmp(Long id, Matiere matiere, Creneau creneau, AppUser appuser) {
 		super();
 		this.id = id;
 		this.matiere = matiere;
 		this.creneau = creneau;
+		this.appuser = appuser;
 	}
 	
-	public DemandeEmp(Matiere matiere, Creneau creneau) {
+	public DemandeEmp(Matiere matiere, Creneau creneau, AppUser appuser) {
 		super();
 		this.matiere = matiere;
 		this.creneau = creneau;
+		this.appuser = appuser;
 	}
 
 	public Long getId() {
@@ -76,6 +81,14 @@ public class DemandeEmp {
 
 	public void setMatiere(Matiere matiere) {
 		this.matiere = matiere;
+	}
+
+	public AppUser getAppuser() {
+		return appuser;
+	}
+
+	public void setAppuser(AppUser appuser) {
+		this.appuser = appuser;
 	}
 	
 	

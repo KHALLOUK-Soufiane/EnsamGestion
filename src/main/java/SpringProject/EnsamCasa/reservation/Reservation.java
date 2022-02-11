@@ -36,7 +36,7 @@ public class Reservation {
 	@JoinColumn(name = "idUser")
 	private AppUser appuser;
 	@ManyToOne
-	@JoinColumn(name = "idCreaneau")
+	@JoinColumn(name = "idCreneau")
 	private Creneau creneau;
 	
 	public Reservation() {
