@@ -362,7 +362,30 @@ public class WebController {
 		
 		return "reserverSalle";
 	}
-	
+	@GetMapping("/emploiProf")
+	public String emploiProf(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		
+		Reservation reservation = new Reservation();
+		model.addAttribute("reservation", reservation);
+		
+		List<Salle> salles = salleRepository.findAll();
+		List<Creneau> creneaux = creneauRepository.findAll();
+		model.addAttribute("salles", salles);
+		model.addAttribute("creneaux", creneaux);
+		
+		return "emploiProf";
+	}
+	@PostMapping("/emploiProf")
+	public String emploiProf(@ModelAttribute("reservation") Reservation reservation, Model model) {
+		reservationRepository.save(reservation);
+		return "redirect:/emploiProf";
+	}
 	@PostMapping("/reserverSalle")
 	public String reserverSallePost(@ModelAttribute("reservation") Reservation reservation, Model model) {
 		reservationRepository.save(reservation);
