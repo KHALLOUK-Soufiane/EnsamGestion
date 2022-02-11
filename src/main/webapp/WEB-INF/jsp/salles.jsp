@@ -42,6 +42,7 @@
                         <td>
                           ${salle.capacite}
                         </td>
+                        <c:if test="${user.appUserRole == 'ADMIN'}">
                         <td>
                         <form action="/modifierSalle" method="get">
                     		<input type="hidden" value="${salle.id}" name="id">
@@ -53,6 +54,7 @@
                     	</form>
                     	
                     	</td>
+                    	</c:if>
                       </tr>
                     </c:forEach>
                     </tbody>
