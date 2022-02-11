@@ -10,7 +10,7 @@
               </div>
               <div class="card-body">
                 <form:form action="reserverSalle" method="post" modelAttribute="reservation">
-          
+
                   
                   <div class="row">
                     <div class="col pr-1">
@@ -27,6 +27,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="row">
                     <div class="col pr-1">
                       <div class="form-group">
@@ -37,6 +38,7 @@
                       </div>
                     </div>                  
                   </div>
+
                   
                   <button type="submit" class="btn btn-primary d-block btn-user w-100">Ajouter</button>
                 </form:form>
