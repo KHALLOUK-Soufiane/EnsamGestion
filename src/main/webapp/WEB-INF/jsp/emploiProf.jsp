@@ -28,7 +28,7 @@
 												</optgroup>
 											</select>               
 							</div>
-			               	<input type="hidden" value="${profs.getCIN() }" class="btn btn-info"/>
+			               	<input type="submit" value="Submit" class="btn btn-info"/>
 			          	</form>
                   	</div>    
 	              </div>

@@ -363,7 +363,7 @@ public class WebController {
 		return "reserverSalle";
 	}
 	@GetMapping("/emploiProf")
-	public String emploiProf(Model model) {
+	public String emploiProf(Model model,@RequestParam(required=false,defaultValue="H223153") String cin) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser user = null;
 		if (principal instanceof AppUser) {
@@ -371,8 +371,7 @@ public class WebController {
 			}
 		model.addAttribute("user", user);
 		
-		Reservation reservation = new Reservation();
-		model.addAttribute("reservation", reservation);
+		
 		
 		List<Salle> salles = salleRepository.findAll();
 		List<Creneau> creneaux = creneauRepository.findAll();
