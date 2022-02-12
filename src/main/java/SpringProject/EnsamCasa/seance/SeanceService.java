@@ -23,7 +23,12 @@ public class SeanceService {
 		seanceRepository.save(seance);
 	}
 	
-	public List<Seance> getSeancesDay(String day){
-		return seanceRepository.findSeanceByDay(day);
+	public List<Seance> getSeancesDay(String day, String filiere, Integer niveau){
+		return seanceRepository.findSeanceByDay(day, filiere, niveau);
 	}
+	
+	public List<Seance> getSeancesDayProf(String day, String cin){
+		return seanceRepository.findSeanceByDayProf(day, cin);
+	}
+	
 }

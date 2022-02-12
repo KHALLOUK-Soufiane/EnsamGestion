@@ -1,12 +1,19 @@
 package SpringProject.EnsamCasa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import SpringProject.EnsamCasa.appuser.AppUser;
+import SpringProject.EnsamCasa.creneau.Creneau;
+import SpringProject.EnsamCasa.creneau.CreneauRepository;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmp;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmpRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
 import SpringProject.EnsamCasa.etudiant.EtudiantController;
 import SpringProject.EnsamCasa.etudiant.EtudiantRepository;
@@ -15,12 +22,15 @@ import SpringProject.EnsamCasa.professeur.Professeur;
 import SpringProject.EnsamCasa.professeur.ProfesseurController;
 import SpringProject.EnsamCasa.professeur.ProfesseurRepository;
 import SpringProject.EnsamCasa.professeur.ProfesseurService;
+import SpringProject.EnsamCasa.reservation.Reservation;
+import SpringProject.EnsamCasa.reservation.ReservationRepository;
 import SpringProject.EnsamCasa.salle.Salle;
 import SpringProject.EnsamCasa.salle.SalleController;
 import SpringProject.EnsamCasa.salle.SalleRepository;
 import SpringProject.EnsamCasa.salle.SalleService;
 import SpringProject.EnsamCasa.seance.Seance;
 import SpringProject.EnsamCasa.seance.SeanceController;
+import SpringProject.EnsamCasa.seance.SeanceRepository;
 import SpringProject.EnsamCasa.seance.SeanceService;
 
 @Controller
@@ -34,23 +44,76 @@ public class WebController {
 	@Autowired EtudiantRepository etudiantRepository;
 	@Autowired ProfesseurRepository professeurRepository;
 	@Autowired SalleRepository salleRepository;
+	@Autowired CreneauRepository creneauRepository;
+	@Autowired ReservationRepository reservationRepository;
+	@Autowired SeanceRepository seanceRepository;
+	@Autowired DemandeEmpRepository demandeEmpRepository;
 	@Autowired SalleService salleService;
 	@Autowired SeanceService seanceService;
 	@Autowired ProfesseurService professeurService;
 
 	
-	@GetMapping("/")
-	public String index() {
+	@GetMapping("/dashboard")
+	public String dashboard(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		model.addAttribute("user", user);
+		Long nbEtudiant=etudiantRepository.count();
+		model.addAttribute("nbEtudiant",nbEtudiant);
+		Long nbProf=professeurRepository.count();
+		model.addAttribute("nbProf",nbProf);
+		Long nbSalle=salleRepository.count();
+		model.addAttribute("nbSalle",nbSalle);
+		
+		List<Reservation> reservations =  reservationRepository.findAll();
+		model.addAttribute("reservations", reservations);
+		
+		List<DemandeEmp> demandes =  demandeEmpRepository.findAll();
+		model.addAttribute("demandes", demandes);
+		
 		return "index";
 	}
 	
+	@GetMapping("/")
+	public String index(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		return "redirect:home";
+	}
+	
 	@GetMapping("/home")
-	public String home() {
+	public String home(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		Long nbEtudiant=etudiantRepository.count();
+		model.addAttribute("nbEtudiant",nbEtudiant);
+		Long nbProf=professeurRepository.count();
+		model.addAttribute("nbProf",nbProf);
+		Long nbSalle=salleRepository.count();
+		model.addAttribute("nbSalle",nbSalle);
 		return "home";
 	}
 	
 	@GetMapping("/etudiants")
 	public String etudiants(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Etudiant> etudiants = etudiantController.getEtudiants();
 		model.addAttribute("etudiants", etudiants);
 		return "etudiants";
@@ -58,36 +121,87 @@ public class WebController {
 	
 	@GetMapping("/professeurs")
 	public String professeurs(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Professeur> professeurs = professeurController.getProfs();
 		model.addAttribute("profs", professeurs);
 		return "professeurs";
 	}
 	
 	@GetMapping("/emplois")
-	public String emplois(Model model, @RequestParam(required=true,defaultValue="IAGI1") String filiere) {
-		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi");
-		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi");
-		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi");
-		List<Seance> seancesJ = seanceController.getSeancesByDay("Jeudi");
-		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi");
+	public String emplois(Model model, @RequestParam(required=false,defaultValue="IAGI1") String filiere) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+	
+		model.addAttribute("user", user);
+		Integer niveau;
+		if(filiere != null) {
+			niveau = Integer.parseInt(filiere.substring(filiere.length()-1));
+			filiere = filiere.substring(0, filiere.length()-1);
+		}
+		else {
+			filiere = "";
+			niveau = 0;
+		}
 		
+		List<Seance> seancesL = seanceController.getSeancesByDay("Lundi", filiere, niveau+2);
+		List<Seance> seancesM = seanceController.getSeancesByDay("Mardi", filiere, niveau+2);
+		List<Seance> seancesMe = seanceController.getSeancesByDay("Mercredi", filiere, niveau+2);
+		List<Seance> seancesJ = seanceController.getSeancesByDay("Jeudi", filiere, niveau+2);
+		List<Seance> seancesV = seanceController.getSeancesByDay("Vendredi", filiere, niveau+2);
+		
+		
+		//seances afin d'avoir l'emploi de chaque prof
+		List<Seance> seancesLProf = seanceController.getSeancesByDayProf("Lundi", user.getCIN());
+		List<Seance> seancesMProf = seanceController.getSeancesByDayProf("Mardi", user.getCIN());
+		List<Seance> seancesMeProf = seanceController.getSeancesByDayProf("Mercredi", user.getCIN());
+		List<Seance> seancesJProf = seanceController.getSeancesByDayProf("Jeudi", user.getCIN());
+		List<Seance> seancesVProf = seanceController.getSeancesByDayProf("Vendredi", user.getCIN());
+		model.addAttribute("seancesLProf", seancesLProf);
+		model.addAttribute("seancesMProf", seancesMProf);
+		model.addAttribute("seancesMeProf", seancesMeProf);
+		model.addAttribute("seancesJProf", seancesJProf);
+		model.addAttribute("seancesVProf", seancesVProf);
+		
+		//fin seance emploi prof
 		model.addAttribute("filiere", filiere);
-		model.addAttribute("seancesL", seancesL);
-		model.addAttribute("seancesM", seancesM);
-		model.addAttribute("seancesMe", seancesMe);
-		model.addAttribute("seancesJ", seancesJ);
-		model.addAttribute("seancesV", seancesV);
+		if(filiere != null) {
+			model.addAttribute("seancesL", seancesL);
+			model.addAttribute("seancesM", seancesM);
+			model.addAttribute("seancesMe", seancesMe);
+			model.addAttribute("seancesJ", seancesJ);
+			model.addAttribute("seancesV", seancesV);
+		}
 		
 		return "emplois";
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		return "login";
 	}
 	
 	@GetMapping("/salles")
 	public String salles(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		List<Salle> salles = salleController.getSalles();
 		model.addAttribute("salles", salles);
 		return "salles";
@@ -95,6 +209,12 @@ public class WebController {
 	
 	@GetMapping("/ajouterEtudiant")
 	public String ajouterEtudiant(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Etudiant etu = new Etudiant();
 		model.addAttribute("etudiant", etu);
 		return "ajouterEtudiant";
@@ -102,6 +222,12 @@ public class WebController {
 	
 	@GetMapping("/ajouterProfesseur")
 	public String ajouterProfesseur(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Professeur prof = new Professeur();
 		model.addAttribute("professeur", prof);
 		return "ajouterProfesseur";
@@ -109,6 +235,12 @@ public class WebController {
 
 	@GetMapping("/ajouterSalle")
 	public String ajouterSalle(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Salle salle = new Salle();
 		model.addAttribute("salle", salle);
 		return "ajouterSalle";
@@ -152,6 +284,12 @@ public class WebController {
 	
 	@GetMapping("/modifierEtudiant")
 	public String modifierEtudiant(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Etudiant etu = new Etudiant();
 		model.addAttribute("etudiant", etu);
 		model.addAttribute("etudiantExistant", etudiantRepository.findById(id).get());
@@ -167,6 +305,12 @@ public class WebController {
 	
 	@GetMapping("/modifierProfesseur")
 	public String modifierProfesseur(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Professeur prof = new Professeur();
 		model.addAttribute("professeur", prof);
 		model.addAttribute("professeurExistant", professeurRepository.findById(id).get());
@@ -181,6 +325,12 @@ public class WebController {
 	
 	@GetMapping("/modifierSalle")
 	public String modifierSalle(Model model, @RequestParam Long id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
 		Salle salle = new Salle();
 		model.addAttribute("salle", salle);
 		model.addAttribute("salleExistante", salleRepository.findById(id).get());
@@ -192,5 +342,79 @@ public class WebController {
 		salleService.updateSalle(salle.getId(), salle);
 		return "redirect:salles";
 	}
+	
+	@GetMapping("/reserverSalle")
+	public String reserverSalle(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		
+		Reservation reservation = new Reservation();
+		model.addAttribute("reservation", reservation);
+		
+		List<Salle> salles = salleRepository.findAll();
+		List<Creneau> creneaux = creneauRepository.findAll();
+		model.addAttribute("salles", salles);
+		model.addAttribute("creneaux", creneaux);
+		
+		return "reserverSalle";
+	}
+	@GetMapping("/emploiProf")
+	public String emploiProf(Model model,@RequestParam(required=false,defaultValue="H223153") String cin) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+			}
+		model.addAttribute("user", user);
+		
+		
+		
+		List<Salle> salles = salleRepository.findAll();
+		List<Creneau> creneaux = creneauRepository.findAll();
+		model.addAttribute("salles", salles);
+		model.addAttribute("creneaux", creneaux);
+		
+		return "emploiProf";
+	}
+	@PostMapping("/emploiProf")
+	public String emploiProf(@ModelAttribute("reservation") Reservation reservation, Model model) {
+		reservationRepository.save(reservation);
+		return "redirect:/emploiProf";
+	}
+	@PostMapping("/reserverSalle")
+	public String reserverSallePost(@ModelAttribute("reservation") Reservation reservation, Model model) {
+		reservationRepository.save(reservation);
+		return "redirect:/reserverSalle";
+	}
+	
+	@GetMapping("/modifierEmploi")
+	public String modifierEmploi(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		AppUser user = null;
+		if (principal instanceof AppUser) {
+			user = (AppUser)principal;
+		}
+		model.addAttribute("user", user);
+		
+		DemandeEmp demandeEmp = new DemandeEmp();
+		model.addAttribute("demandeEmp", demandeEmp);
+		
+		List<Seance> seances = seanceRepository.findAll();
+		model.addAttribute("sea", seances);
+		
+		return "modifierEmploi";
+	}
+	
+	@PostMapping("/modifierEmploi")
+	public String modifierEmploiPost(@ModelAttribute("demandeEmp") DemandeEmp demandeEmp) {
+		demandeEmpRepository.save(demandeEmp);
+		return "redirect:modifierEmploi";
+	}
+	
+
 
 }

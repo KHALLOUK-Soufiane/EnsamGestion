@@ -41,14 +41,16 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
+        <c:if test="${user == null }">
           <li class="nav-item">
             <a class="nav-link" href="login.jsp">
-               Login
+               Se Connecter
             </a>
           </li>
+          </c:if>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Have an issue?
+            <a class="nav-link" href="/emplois">
+              Acceder a l'application
             </a>
           </li>
         </ul>
@@ -56,7 +58,7 @@
     </div>
   </nav>
   <div class="page-header clear-filter" filter-color="orange">
-    <div class="page-header-image" style="background-image: url('assets/img/header.jpg');"></div>
+    <div class="page-header-image" style="background-image: url('assets/img/school.jpg');"></div>
     <div class="container text-center">
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand">
@@ -74,14 +76,14 @@
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
                 <h5 class="card-category">Combien d'etudiants ?</h5>
-                <h4 class="card-title" style="color:red">1202</h4>
+                <h4 class="card-title" style="color:red">${nbEtudiant}</h4>
               </div>
               <div class="card-body">
                       <span class="now-ui-icons users_single-02"></span>
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -90,15 +92,15 @@
           <div class="col-lg-4">
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
-                <h5 class="card-category">Combien de filières ?</h5>
-                <h4 class="card-title" style="color:red">5</h4>
+                <h5 class="card-category">Combien de professeurs ?</h5>
+                <h4 class="card-title" style="color:red">${nbProf}</h4>
               </div>
               <div class="card-body">
                       <span class="now-ui-icons files_single-copy-04"></span>
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
@@ -108,7 +110,7 @@
             <div class="card card-chart" style="background-color: rgba(0,0,0,0.7) ;">
               <div class="card-header">
                 <h5 class="card-category">Combien de salles ?</h5>
-                <h4 class="card-title" style="color:red">76</h4>
+                <h4 class="card-title" style="color:red">${nbSalle}</h4>
               </div>
               <div class="card-body">
                                     <span class="now-ui-icons design-2_ruler-pencil"></span>
@@ -116,15 +118,14 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> A Jour
                 </div>
               </div>
             </div>
           </div>   
                  
           </div>
-          
-          <a href="" class="btn btn-primary btn-round btn-lg">LOGIN NOW</a>
+          <a href="/emploi" class="btn btn-primary btn-round btn-lg">ENSAM Gestion</a>
         </div>
       </div>
     </div>

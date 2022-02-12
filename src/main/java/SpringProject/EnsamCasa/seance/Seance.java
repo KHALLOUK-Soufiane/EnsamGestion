@@ -2,6 +2,7 @@ package SpringProject.EnsamCasa.seance;
 
 import javax.persistence.*;
 
+import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.emploi.Emploi;
 import SpringProject.EnsamCasa.matiere.Matiere;
 import SpringProject.EnsamCasa.professeur.Professeur;
@@ -21,9 +22,9 @@ public class Seance {
 			generator = "seance_sequence"
 			)
 	private Long id;
-	private Integer heurDeb;
-	private Integer heurFin;
-	private String jour;
+	@ManyToOne
+	@JoinColumn(name = "idCreneau")
+	private Creneau creneau;
     @ManyToOne
     @JoinColumn(name = "idSalle")
     private Salle salle;
@@ -58,33 +59,28 @@ public class Seance {
 		this.emploi = emploi;
 	}
 
-	public Seance(Integer heurDeb, Integer heurFin, String jour, Salle salle, Matiere matiere, Professeur professeur) {
+	public Seance(Creneau creneau, Salle salle, Matiere matiere, Professeur professeur) {
 		super();
-		this.heurDeb = heurDeb;
-		this.heurFin = heurFin;
-		this.jour = jour;
+		this.creneau = creneau;
 		this.salle = salle;
 		this.matiere = matiere;
 		this.professeur = professeur;
 	}
 	
-	public Seance(Integer heurDeb, Integer heurFin, String jour, Matiere matiere, Professeur professeur, Emploi emploi) {
+	public Seance(Creneau creneau, Matiere matiere, Professeur professeur, Emploi emploi,Salle salle) {
 		super();
 		this.emploi=emploi;
-		this.heurDeb = heurDeb;
-		this.heurFin = heurFin;
-		this.jour = jour;
+		this.creneau = creneau;
 		this.matiere = matiere;
 		this.professeur = professeur;
+		this.salle = salle;
 	}
 
-	public Seance(Long id, Integer heurDeb, Integer heurFin, String jour, Salle salle, Matiere matiere,
+	public Seance(Long id, Creneau creneau, Salle salle, Matiere matiere,
 			Professeur professeur) {
 		super();
 		this.id = id;
-		this.heurDeb = heurDeb;
-		this.heurFin = heurFin;
-		this.jour = jour;
+		this.creneau = creneau;
 		this.salle = salle;
 		this.matiere = matiere;
 		this.professeur = professeur;
@@ -96,30 +92,6 @@ public class Seance {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Integer getHeurDeb() {
-		return heurDeb;
-	}
-
-	public void setHeurDeb(Integer heurDeb) {
-		this.heurDeb = heurDeb;
-	}
-
-	public Integer getHeurFin() {
-		return heurFin;
-	}
-
-	public void setHeurFin(Integer heurFin) {
-		this.heurFin = heurFin;
-	}
-
-	public String getJour() {
-		return this.jour;
-	}
-
-	public void setJour(String jour) {
-		this.jour = jour;
 	}
 
 	public Matiere getMatiere() {
@@ -136,6 +108,14 @@ public class Seance {
 
 	public void setProfesseur(Professeur professeur) {
 		this.professeur = professeur;
+	}
+
+	public Creneau getCreneau() {
+		return creneau;
+	}
+
+	public void setCreneau(Creneau creneau) {
+		this.creneau = creneau;
 	}
 	
 	

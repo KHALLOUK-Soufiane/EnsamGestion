@@ -25,7 +25,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color=red>
+    <div class="sidebar" data-color=blue>
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -34,29 +34,33 @@
           EG
         </a>
         <a href="/" class="simple-text logo-normal">
-          ENSAM GESTION
+          <img style="width:100%" src="assets/img/logoapp.png">
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
+           <c:if test="${user.appUserRole == 'ADMIN'}">
+        
           <li>
-            <a href="home">
+            <a href="/dashboard">
+            
               <i class="now-ui-icons design_app"></i>
-              <p>Home</p>
+              
+              <p>Dashboard</p>
             </a>
           </li>
+			</c:if>
 
 
-
-          
+         
            <li>
-
-            <a href="emplois?filiere=IAGI1">
-
+            <a href="emplois">
               <i class="now-ui-icons files_single-copy-04"></i>
               <p>Liste des emplois</p>
             </a>
           </li>
+          
+          <c:if test="${user.appUserRole != 'STUDENT'}">
           
           <li>
             <a href="etudiants">
@@ -64,6 +68,14 @@
               <p>Liste des étudiants</p>
             </a>
           </li>
+                    <li>
+            <a href="salles">
+              <i class="now-ui-icons tech_mobile"></i>
+              <p>Liste des salles</p>
+            </a>
+          </li>
+          </c:if>
+          <c:if test="${user.appUserRole == 'ADMIN'}">
           
          <li>
             <a href="professeurs">
@@ -72,13 +84,21 @@
             </a>
           </li>
           
-          <li>
-            <a href="salles">
+          </c:if>
+            <li>
+            <a href="reserverSalle">
               <i class="now-ui-icons tech_mobile"></i>
-              <p>Liste des salles</p>
+              <p>Reserver des salles</p>
             </a>
           </li>
-          
+          <c:if test="${user.appUserRole == 'PROFESSOR'}">
+            <li>
+            <a href="modifierEmploi">
+              <i class="now-ui-icons tech_mobile"></i>
+              <p>Demande Modification Emploi</p>
+            </a>
+          </li>
+          </c:if>
         </ul>
       </div>
     </div>
@@ -102,16 +122,8 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+                            <p>BONJOUR ${user.firstName}</p>
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="">
@@ -126,8 +138,8 @@
                   <i class="now-ui-icons users_single-02"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" href="#">${user.firstName} ${user.lastName}</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </li>
               
@@ -136,6 +148,9 @@
         </div>
       </nav>
       <!-- End Navbar -->
+                 
+      
             <div class="panel-header panel-sm">
+             <img src="assets/img/waves.png" style="width:100%;height:150px">
       </div>
     

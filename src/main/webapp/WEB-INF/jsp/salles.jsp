@@ -8,8 +8,9 @@
               <div class="card-header">
               <div class="row">
               <div class="col-8"><h4 class="card-title"> Liste des salles </h4></div>
+              <c:if test="${user.appUserRole == 'ADMIN'}">
               <div class="col-4"><a href="ajouterSalle" class="btn btn-info">Ajouter une salle</a></div>
-               
+               </c:if>
               </div>
                 
               </div>
@@ -41,17 +42,21 @@
                         <td>
                           ${salle.capacite}
                         </td>
+                        <c:if test="${user.appUserRole == 'ADMIN'}">
                         <td>
                         <form action="/modifierSalle" method="get">
                     		<input type="hidden" value="${salle.id}" name="id">
                     		<input type="submit" class="btn btn-primary" value="Modifier">
                     	</form>
+                    	</td>
+                    	<td>
                     	<form action="/deleteSalle" method="post">
                     		<input type="hidden" value="${salle.id}" name="id">
                     		<input type="submit" class="btn btn-danger" value="Supprimer">
                     	</form>
                     	
                     	</td>
+                    	</c:if>
                       </tr>
                     </c:forEach>
                     </tbody>

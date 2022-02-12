@@ -5,15 +5,23 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import SpringProject.EnsamCasa.appuser.AppUser;
+import SpringProject.EnsamCasa.appuser.AppUserRepository;
+import SpringProject.EnsamCasa.appuser.AppUserRole;
 import SpringProject.EnsamCasa.classe.Classe;
 import SpringProject.EnsamCasa.classe.ClasseRepository;
 import SpringProject.EnsamCasa.creneau.Creneau;
 import SpringProject.EnsamCasa.creneau.CreneauRepository;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmp;
+import SpringProject.EnsamCasa.demandeEmp.DemandeEmpRepository;
 import SpringProject.EnsamCasa.emploi.Emploi;
 import SpringProject.EnsamCasa.emploi.EmploiRepository;
 import SpringProject.EnsamCasa.etudiant.Etudiant;
@@ -39,6 +47,8 @@ public class EnsamCasaApplication implements CommandLineRunner{
     @Autowired MatiereRepository ob5;
     @Autowired EmploiRepository ob6;
     @Autowired ClasseRepository ob7;
+    @Autowired AppUserRepository ob8;
+    @Autowired DemandeEmpRepository ob9;
 
 
 
@@ -50,52 +60,121 @@ public class EnsamCasaApplication implements CommandLineRunner{
 	@Override
     public void run(String... args) throws Exception
     {
-		Etudiant student = new Etudiant("1562032", "2eme annee", "stuNom", "stuPrenom", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student = new Etudiant("1562032", "2eme annee", "KHALLOUK", "Soufiane", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student2 = new Etudiant("5132104", "2eme annee", "ALOUI", "Yahya", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
+		Etudiant student3 = new Etudiant("9785462", "2eme annee", "MAKOUAR", "Ali", "651261879", "g@r.com", LocalDate.of(2005, Month.AUGUST, 25));
         ob.save(student);
-        Salle s = new Salle("adskfjaldssalle",30,1);
+        ob.save(student2);
+        ob.save(student3);
+        Salle s = new Salle("Salle 1",30,1);
+        Salle s2 = new Salle("Salle 2",30,1);
+        Salle s3 = new Salle("Salle 3",30,1);
+        Salle s4 = new Salle("Salle 4",30,1);
+        Salle s5 = new Salle("Salle 5",30,1);
+        Salle s6 = new Salle("Salle 6",30,1);
+        Salle s7 = new Salle("Salle 7",30,1);
+        Salle s8 = new Salle("Salle 8",30,1);
+        Salle s9 = new Salle("Salle 9",30,1);
+        Salle s10 = new Salle("Salle 10",30,1);
         ob3.save(s);
+        ob3.save(s2);
+        ob3.save(s3);
+        ob3.save(s4);
+        ob3.save(s5);
+        ob3.save(s6);
+        ob3.save(s7);
+        ob3.save(s8);
+        ob3.save(s9);
+        ob3.save(s10);
+        
+        
+        // ajout des classes
         Classe iagi1 = new Classe(3,"1ere annee IAGI","IAGI");
         ob7.save(iagi1);
         Classe iagi2 = new Classe(4,"2eme annee IAGI","IAGI");
         ob7.save(iagi2);
-
+        
+        
         Classe api1 = new Classe(1,"1ere annee cycle preparatoire","API1");
         ob7.save(api1);
 
-
+        //ajout des utilisateurs
+        AppUser pElfaquih = new AppUser("Loubna","Elfaquih","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Elfaquih@ensam-casa.ma",AppUserRole.PROFESSOR,false,true,"H223153");
+        AppUser pZekrani = new AppUser("Abdelali","Zekrani","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Zekrani@ensam-casa.ma",AppUserRole.PROFESSOR,false,true,"HE489751");
+        AppUser eYahya = new AppUser("Aloui","Yahya","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Aloui@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H1");
+        AppUser eAli = new AppUser("Makouar","Ali","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Makouar@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H2");
+        AppUser eSoufiane = new AppUser("Khallouk","Soufiane","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Khallouk@ensam-casa.ma",AppUserRole.STUDENT,false,true,"H3");
+        AppUser aBessas = new AppUser("Bessas","Bouchra","$2a$10$SsIq9yfsy9P7MXW71Z/7Tuq4.VfQbfscPVURXVd5/IBbu1VkOKzyW","Bessas@ensam-casa.ma",AppUserRole.ADMIN,false,true,"H4");
+        ob8.save(pElfaquih);
+        ob8.save(pZekrani);
+        ob8.save(eYahya);
+        ob8.save(eAli);
+        ob8.save(eSoufiane);
+        ob8.save(aBessas);
+        
+        
+        
 		ArrayList<Matiere> cours = new ArrayList<Matiere>();
 		ArrayList<Creneau> creneau = new ArrayList<Creneau>();
 		Emploi emp1 = new Emploi(1,iagi1);
+		Emploi emp2 = new Emploi(1,iagi2);
 		
-		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "test@email.com", "1234567890");
+		// ajout des professeurs
+		Professeur prof=new Professeur("HE489751", "zakrani", "abdali", "zakrani@email.com", "1234567890");
+		Professeur prof2= new Professeur("H223153","Elfaquih","Loubna","Elfaquih@email.com","061231231");
+		Professeur prof3= new Professeur("FR874521","Chergui","Adil","Chergui@email.com","134568754");
+		Professeur prof4= new Professeur("VB125487","Bahnass","Ayoub","Bahnass@email.com","061231231");
+		Professeur prof5= new Professeur("VR129787","Moutachaouik","Mohammed","Moutachaouik@email.com","0661328199");
+		Professeur prof6= new Professeur("UI187987","Alami","Mustapha","Alami@email.com","0611238973");
+		Professeur prof7= new Professeur("JU986212","Elkebch","Ali","Elkebch@email.com","0611312391");
+		Professeur prof8= new Professeur("CV978456","Laaraj","Ahmed","Laaraj@email.com","0616238231");
+
 		ob2.save(prof);
-		Matiere c1 = new Matiere("php",prof,iagi1);
+		ob2.save(prof2);
+		ob2.save(prof3);
+		ob2.save(prof4);
+		ob2.save(prof5);
+		ob2.save(prof6);
+		ob2.save(prof7);
+		ob2.save(prof8);
+
+		
+		// ajout des matieres
+		Matiere c1 = new Matiere("php",prof3,iagi1);
 		Matiere c2 = new Matiere("html",prof,iagi1);
 		Matiere c3 = new Matiere("mongodb",prof,iagi2);
-		Matiere c4 = new Matiere("merise",prof,iagi1);
+		Matiere c4 = new Matiere("merise",prof2,iagi1);
 		Matiere c5 = new Matiere("Linux",prof,iagi1);
-		Matiere c6 = new Matiere("java",prof,iagi1);
-		Matiere c7 = new Matiere("oracle",prof,iagi2);
+		Matiere c6 = new Matiere("java",prof4,iagi1);
+		Matiere c7 = new Matiere("oracle",prof3,iagi2);
 		Matiere c8 = new Matiere("Machine Learning",prof,iagi2);
-		Matiere c9 = new Matiere("Analyse data",prof,iagi2);
-		Matiere c10 = new Matiere("sport",prof,iagi1);
-		Matiere c11 = new Matiere("securite",prof,iagi2);
-		Matiere c12 = new Matiere("python",prof,iagi1);
+		Matiere c9 = new Matiere("Analyse data",prof2,iagi2);
+		Matiere c10 = new Matiere("sport",prof2,iagi1);
+		Matiere c11 = new Matiere("securite",prof3,iagi2);
+		Matiere c12 = new Matiere("python",prof2,iagi1);
 		Matiere c14 = new Matiere("Analyse 1",prof,api1);
 		Matiere c13 = new Matiere("Algebre 2",prof,api1);
 		Matiere c15 = new Matiere("Algebre 1",prof,api1);
-		Matiere c16 = new Matiere("Design pattern",prof,iagi2);
-		Matiere c17= new Matiere("Anglais",prof,iagi2);
-		Matiere c18 = new Matiere("espagnol",prof,iagi2);
-		Matiere c19 = new Matiere("Administration",prof,iagi2);
-		Matiere c20 = new Matiere("jee",prof,iagi2);
-		/*Matiere c21 = new Matiere("Algebre 1",prof,api1);
-		Matiere c22 = new Matiere("Design pattern",prof,iagi2);
-		Matiere c23= new Matiere("Anglais",prof,api1);
-		Matiere c24 = new Matiere("espagnol",prof,iagi2);
-		Matiere c25 = new Matiere("Administration",prof,iagi1);*/
-	
+		Matiere c16 = new Matiere("Design pattern",prof4,iagi2);
+		Matiere c17 = new Matiere("Anglais",prof4,iagi2);
+		Matiere c18 = new Matiere("espagnol",prof4,iagi2);
+		Matiere c19 = new Matiere("Administration Reseau",prof3,iagi2);
+		Matiere c20 = new Matiere("jee",prof2,iagi2);
+		Matiere c21 = new Matiere("Structures des donnees",prof4,iagi1);
+		Matiere c22 = new Matiere("Language C",prof,iagi1);
+		Matiere c23 = new Matiere("francais",prof3,iagi2);
+		Matiere c24 = new Matiere("espagnol",prof2,iagi2);
+		Matiere c25 = new Matiere("Administration",prof3,iagi1);
+		Matiere c26 = new Matiere("UML",prof,iagi1);
+		Matiere c27 = new Matiere("SQL",prof,iagi1);
+		Matiere c28 = new Matiere("",prof4,iagi1);
+		Matiere c29 = new Matiere("",prof4,iagi1);
+		Matiere c30 = new Matiere("",prof4,iagi1);
+		Matiere c31 = new Matiere("",prof4,iagi1);
+		Matiere c32 = new Matiere("Communication",prof2,iagi1);
+		Matiere c33 = new Matiere("Administration",prof3,iagi1);
 		
+		// ajout des cours
 		cours.add(c1);
 		cours.add(c2);
 		cours.add(c3);
@@ -110,44 +189,56 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		cours.add(c12);
 		cours.add(c13);
 		cours.add(c14);
+		cours.add(c28);
+		cours.add(c29);
 		cours.add(c15);
 		cours.add(c16);
 		cours.add(c17);
 		cours.add(c18);
 		cours.add(c19);
 		cours.add(c20);
-		
-	
-		
+		cours.add(c21);
+		cours.add(c22);
+		cours.add(c23);
+		cours.add(c24);
+		cours.add(c25);
+		cours.add(c30);
 
+		cours.add(c26);
+		cours.add(c27);
 
+		cours.add(c31);
+		cours.add(c32);
+		cours.add(c33);
 		
 		ob5.saveAll(cours);
-		Creneau cr1 = new Creneau(800,1000,"Lundi");
-		Creneau cr2 = new Creneau(1015,1215,"Lundi");
+
+		Creneau cr1 = new Creneau(800,1000,"Lundi","Lundi à 8h");
+		Creneau cr2 = new Creneau(1015,1215,"Lundi","Lundi à 10h15");
 		
-		Creneau cr4 = new Creneau(1400,1600,"Lundi");
-		Creneau cr5 = new Creneau(1615,1815,"Lundi");
-		Creneau cr6 = new Creneau(800,1000,"Mardi");
-		Creneau cr7 = new Creneau(1015,1215,"Mardi");
+		Creneau cr4 = new Creneau(1400,1600,"Lundi","Lundi à 14h");
+		Creneau cr5 = new Creneau(1615,1815,"Lundi","Lundi à 16h15");
+		Creneau cr6 = new Creneau(800,1000,"Mardi","Mardi à 8h");
+		Creneau cr7 = new Creneau(1015,1215,"Mardi","Mardi à 10h15");
+
 	
-		Creneau cr9 = new Creneau(1400,1600,"Mardi");
-		Creneau cr10 = new Creneau(1615,1815,"Mardi");
-		Creneau cr11 = new Creneau(800,1000,"Mercredi");
-		Creneau cr12 = new Creneau(1015,1215,"Mercredi");
+		Creneau cr9 = new Creneau(1400,1600,"Mardi","Mardi à 14h");
+		Creneau cr10 = new Creneau(1615,1815,"Mardi","Mardi à 16h15");
+		Creneau cr11 = new Creneau(800,1000,"Mercredi","Mercredi à 8h");
+		Creneau cr12 = new Creneau(1015,1215,"Mercredi","Mercredi à 10h15");
 		
-		Creneau cr14 = new Creneau(1400,1600,"Mercredi");
-		Creneau cr15 = new Creneau(1615,1815,"Mercredi");
-		Creneau cr16 = new Creneau(800,1000,"Jeudi");
-		Creneau cr17 = new Creneau(1015,1215,"Jeudi");
+		Creneau cr14 = new Creneau(1400,1600,"Mercredi","Mercredi à 14h");
+		Creneau cr15 = new Creneau(1615,1815,"Mercredi","Mercredi à 16h15");
+		Creneau cr16 = new Creneau(800,1000,"Jeudi","Jeudi à 8h");
+		Creneau cr17 = new Creneau(1015,1215,"Jeudi","Jeudi à 10h15");
 	
-		Creneau cr19 = new Creneau(1400,1600,"Jeudi");
-		Creneau cr20 = new Creneau(1615,1815,"Jeudi");
-		Creneau cr21 = new Creneau(800,1000,"Vendredi");
-		Creneau cr22 = new Creneau(1015,1215,"Vendredi");
+		Creneau cr19 = new Creneau(1400,1600,"Jeudi","Jeudi à 14h");
+		Creneau cr20 = new Creneau(1615,1815,"Jeudi","Jeudi à 16h15");
+		Creneau cr21 = new Creneau(800,1000,"Vendredi","Vendredi à 8h");
+		Creneau cr22 = new Creneau(1015,1215,"Vendredi","Vendredi à 10h15");
 		
-		Creneau cr24 = new Creneau(1400,1600,"Vendredi");
-		Creneau cr25 = new Creneau(1615,1815,"Vendredi");
+		Creneau cr24 = new Creneau(1400,1600,"Vendredi","Vendredi à 14h");
+		Creneau cr25 = new Creneau(1615,1815,"Vendredi","Vendredi à 16h15");
 		
 		
 		creneau.add(cr1);
@@ -177,39 +268,41 @@ public class EnsamCasaApplication implements CommandLineRunner{
 		
 		HashMap<Matiere, Creneau> schedule = new HashMap<Matiere, Creneau>();
 		schedule = emp1.genererEmploi(cours, creneau);
+		HashMap<Matiere, Creneau> schedule2 = new HashMap<Matiere, Creneau>();
+		schedule2 = emp2.genererEmploi(cours, creneau);
 		ob6.save(emp1);
+		ob6.save(emp2);
 		
-		int counterr=0;
-		for(Matiere cours1: cours) {
-			
-			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
-			int sTime=schedule.get(cours1).getStartTime();
-			System.out.println(cours1.getName());
-			int eTime=schedule.get(cours1).getEndTime();
-			String day=schedule.get(cours1).getDay();
-			
-			Professeur profC = cours1.getProfesseur();
-
-			Seance s1=new Seance(sTime,eTime,day,cours1,profC,emp1);
-			
-			
-			schedule.put(cours1, creneau.get(counterr));
-			counterr++;
-			System.out.println(counterr);
-			System.out.println(creneau.size());
-			System.out.println("ended this ull ma fr");
-
-		
-			ob1.save(s1);
-			System.out.println("saved");
-			}
-
-		}
+		genererSeance(schedule, emp1, cours, creneau,(ArrayList<Salle>) ob3.findAll());
+		genererSeance(schedule2, emp2, cours, creneau,(ArrayList<Salle>) ob3.findAll());
 		
 		
-	//        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
+//        Professeur y = new Professeur("WA515421", "prnom", "prprenom", "email@f.com", "6542132");
 //        ob2.save(y);
 //        Seance address = new Seance(8, 10, "Mardi", student, s, y);
 //        ob1.save(address);
     }
+	
+	public void genererSeance(HashMap<Matiere, Creneau> schedule, Emploi emp1, ArrayList<Matiere> cours, ArrayList<Creneau> creneau,ArrayList<Salle> s) {
+		int counterr=0;
+		for(Matiere cours1: cours) {
+			
+			if(cours1.getClasse().getLibelle() == emp1.getClasse().getLibelle()) {
+			Professeur profC = cours1.getProfesseur();
+			
+			//pick a random room
+			Salle randomSalle = s.get((int)(Math.random() * s.size()));
+			
+			System.out.println("size"+(int)(Math.random() *s.size()));
+			Seance s1=new Seance(schedule.get(cours1),cours1,profC,emp1,randomSalle);
+		
+			schedule.put(cours1, creneau.get(counterr));
+			
+			counterr++;
+		
+			ob1.save(s1);
+			System.out.println("saved");
+			}
+		}
+	}
 }
