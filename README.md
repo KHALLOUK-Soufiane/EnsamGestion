@@ -1,0 +1,9 @@
+# EnsamGestion
+Ensam gestion est une application pour la gestion des étudiant au sein de l'ENSAM CASABLANCA.
+
+Les fonctionnalités que propose cette application sont:
+  -LA GESTION DES ETUDIANTS : AJOUTER/SUPPRIMER/MODIFIER
+  -LA GESTION DES PROFESSEURS : AJOUTER/SUPPRIMER/MODIFIER
+  -LA GESTION DES SALLES : AJOUTER/SUPPRIMER/MODIFIER
+  -LA GENERATION DES EMPLOIS DU TEMPS POUR LES ELEVES ET LES PROFESSEURS
+  
